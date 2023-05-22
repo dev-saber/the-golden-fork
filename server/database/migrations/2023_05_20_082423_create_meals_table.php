@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('meals', function (Blueprint $table) {
             $table->id();
             $table->string('meal_name');
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
             $table->float('meal_price', 4,2);
             $table->foreignId('menu_id');
             $table->timestamps();
