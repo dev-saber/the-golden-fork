@@ -9,7 +9,7 @@ export default function Footer() {
       </p>
       <p>
         Phone:
-        <br className="md:hidden" /> (212)5 37 00 00 00
+        <br className="md:hidden" /> (212) 5 37 00 00 00
       </p>
       <p>
         Email:
