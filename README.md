@@ -25,7 +25,7 @@ The Golden Fork is a restaurant website that handles online orders and reservati
 
 # 📁 Client Folder Structure
 
-- `assets` : contains all images used in the project.
+- `assets` : contains all images & fonts used in the project.
 - `component` : contains all components that are used in the project.
 - `hooks` : contains custom hooks used in the project.
 - `pages` : contains all pages of the project.
