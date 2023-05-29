@@ -6,7 +6,7 @@ export default function NavBar() {
   const showMenu = () => setIsShown((prev) => !prev);
 
   return (
-    <div className="font-yellowtail max-w-screen-xl flex flex-wrap mx-auto p-4 items-center justify-around md:gap-36">
+    <div className="max-w-screen-xl flex flex-wrap mx-auto p-4 items-center justify-around md:gap-36">
       <img src={Logo} className="w-1/5 md:w-[10%] lg:-ml-24" alt="Logo" />
       <button
         data-collapse-toggle="navbar-default"
@@ -32,7 +32,7 @@ export default function NavBar() {
       </button>
 
       <ul
-        className={`border-none text-center bg-bgBlack bg-opacity-60 text-2xl top-20 right-24 text-goldenYellow flex-col justify-around w-[50%] p-4 md:p-0 mt-4 border md:flex-row md:space-x-8 md:mt-0 md:border-0 md:relative md:top-0  md:flex md:w-auto ${
+        className={`border-none text-center bg-bgBlack bg-opacity-60 text-2xl top-20 right-24 text-goldenYellow flex-col justify-around w-[50%] p-4 md:p-0 mt-4 border md:flex-row md:space-x-8 md:mt-0 md:border-0 md:relative md:top-0 md:bg-transparent md:flex md:w-auto md:text-white ${
           isShown ? "absolute" : "hidden"
         }`}
       >
