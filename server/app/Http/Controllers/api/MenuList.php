@@ -10,6 +10,6 @@ class MenuList extends Controller
 {
     public function menu()
     {
-        return response()->json(['data' => Menu::with('meals')->get()], 200);
+        return response()->json(Menu::with('meals')->get(), 200);
     }
 }

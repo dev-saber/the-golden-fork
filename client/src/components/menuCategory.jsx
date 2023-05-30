@@ -1,14 +1,29 @@
-import React from 'react';
-import Appetizers from "../assets/images/Appetizers-img.png";
+import React, { useState, useEffect } from "react";
 
-export default function MenuCategory() {
-    return(
-        <div className="flex flex-col items-center">
-            <img src={Appetizers} alt="Appetizers" className='w-3/4 md:w-full'/>
-            <div className="flex flex-col items-center -mt-6 gap-2 md:gap-4">
-                <span className="font-yellowtail text-white text-3xl md:text-5xl">Appetizers</span>
-                <span className="font-poppins text-goldenYellow font-bold md:text-xl">View Menu</span>
-            </div>
-        </div>
-    )
+export default function MenuCategory({ cat }) {
+  const [imageSrc, setImageSrc] = useState(null);
+
+  useEffect(() => {
+    import(`../assets/images/${cat}-img.png`)
+      .then((image) => {
+        setImageSrc(image.default);
+      })
+      .catch((error) => {
+        console.error(`Failed to load image: ${error}`);
+      });
+  }, [cat]);
+
+  return (
+    <div className="flex flex-col items-center">
+      {imageSrc && <img src={imageSrc} alt={cat} className="w-3/4 md:w-full" />}
+      <div className="flex flex-col items-center -mt-6 gap-2 md:gap-4">
+        <span className="font-yellowtail text-white text-3xl md:text-5xl">
+          {cat}
+        </span>
+        <span className="font-poppins text-goldenYellow font-bold md:text-xl">
+          View Menu
+        </span>
+      </div>
+    </div>
+  );
 }
