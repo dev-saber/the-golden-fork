@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import NavLink from "./navLink";
 
 export default function MenuCategory({ cat }) {
   const [imageSrc, setImageSrc] = useState(null);
@@ -20,8 +21,8 @@ export default function MenuCategory({ cat }) {
         <span className="font-yellowtail text-white text-3xl md:text-5xl">
           {cat}
         </span>
-        <span className="font-poppins text-goldenYellow font-bold md:text-xl">
-          View Menu
+        <span className="lg:-ml-16">
+          <NavLink text="View Menu" />
         </span>
       </div>
     </div>

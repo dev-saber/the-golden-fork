@@ -3,6 +3,7 @@ import Title from "../components/title";
 
 import Reservation from "../assets/images/reservation-img.png";
 import Order from "../assets/images/order-img.png";
+import NavLink from "../components/navLink";
 
 export default function Purchase() {
   return (
@@ -20,9 +21,7 @@ export default function Purchase() {
             journey that will tantalize your taste buds and leave you with
             memories to last a lifetime.
           </p>
-          <p className="font-poppins text-goldenYellow font-bold md:text-xl lg:ml-16">
-            Make Your Reservation
-          </p>
+          <NavLink text='Make Your Reservation'/>
         </div>
       </div>
 
@@ -36,9 +35,7 @@ export default function Purchase() {
             with The Golden Fork's online ordering system. Simply browse our
             menu, select your dishes, and place your order.
           </p>
-          <p className="font-poppins text-goldenYellow font-bold md:text-xl lg:ml-16">
-            Make Your Online Order
-          </p>
+          <NavLink text='Make Your Online Order'/>
         </div>
       </div>
     </div>
