@@ -7,18 +7,18 @@ import MenuData from "../services/menuData";
 export default function Menu() {
   const data = MenuData();
   return (
-    <div className="flex flex-col items-center gap-8 lg:gap-24">
+    <div id="menu" className="flex flex-col items-center gap-8 lg:gap-24">
       <Title text="Menu" />
       <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-56">
         {/* Rendering the first 2 categories */}
         {data.slice(0, 2).map((category) => {
-          return <MenuCategory cat = {category.title}/>;
+          return <MenuCategory cat={category.title} />;
         })}
       </div>
       <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-56">
         {/* Rendering the last 2 categories */}
         {data.slice(2).map((category) => {
-          return <MenuCategory cat = {category.title}/>;
+          return <MenuCategory cat={category.title} />;
         })}
       </div>
     </div>

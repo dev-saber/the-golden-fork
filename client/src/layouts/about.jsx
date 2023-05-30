@@ -5,7 +5,10 @@ import Dish from "../assets/images/meal-dish-img.png";
 
 export default function About() {
   return (
-    <div className="mt-8 flex flex-col items-center gap-8 md:gap-16 md:mt-16 lg:gap-24">
+    <div
+      id="about"
+      className="mt-8 flex flex-col items-center gap-8 md:gap-16 md:mt-16 lg:gap-24"
+    >
       <Title text="About" />
       <div className="flex flex-col items-center gap-8 lg:flex-row lg:gap-0 lg:px-32">
         <img

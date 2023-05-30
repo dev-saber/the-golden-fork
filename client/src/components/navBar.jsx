@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-scroll";
 import Logo from "../assets/images/the-golden-fork-logo.svg";
 
 export default function NavBar() {
@@ -32,14 +33,46 @@ export default function NavBar() {
       </button>
 
       <ul
-        className={`border-none text-center bg-bgBlack bg-opacity-60 text-2xl top-20 right-24 text-goldenYellow flex-col justify-around w-[50%] p-4 md:p-0 mt-4 border md:flex-row md:space-x-8 md:mt-0 md:border-0 md:relative md:top-0 md:bg-transparent md:flex md:w-auto md:text-white ${
+        className={`border-none text-center bg-bgBlack bg-opacity-60 text-2xl top-20 right-24 text-goldenYellow flex flex-col justify-around w-[50%] p-4 md:p-0 mt-4 border md:flex-row md:space-x-8 md:mt-0 md:border-0 md:relative md:top-0 md:bg-transparent md:flex md:w-auto md:text-white ${
           isShown ? "absolute" : "hidden"
         }`}
       >
-        <li>About</li>
-        <li>Menu</li>
-        <li>Reservation</li>
-        <li>Online Order</li>
+        <Link
+          to="about"
+          smooth={true}
+          duration={1000}
+          className="cursor-pointer"
+          onClick={() => showMenu()}
+        >
+          About
+        </Link>
+        <Link
+          to="menu"
+          smooth={true}
+          duration={1250}
+          className="cursor-pointer"
+          onClick={() => showMenu()}
+        >
+          Menu
+        </Link>
+        <Link
+          to="reservation"
+          smooth={true}
+          duration={1500}
+          className="cursor-pointer"
+          onClick={() => showMenu()}
+        >
+          Reservation
+        </Link>
+        <Link
+          to="order"
+          smooth={true}
+          duration={1750}
+          className="cursor-pointer"
+          onClick={() => showMenu()}
+        >
+          Online Order
+        </Link>
       </ul>
     </div>
   );
