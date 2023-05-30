@@ -1,12 +1,11 @@
-import Home from "./pages/home";
-import Menu from "./pages/menu";
+import { BrowserRouter} from "react-router-dom";
+import Routing from "./routes/routing";
 
 function App() {
-  
   return (
-    <>
-      <Menu />
-    </>
+    <BrowserRouter>
+      <Routing/>
+    </BrowserRouter>
   );
 }
 
