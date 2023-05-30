@@ -8,7 +8,7 @@ export default function Menu() {
   const data = MenuData();
   const content = data.map((category) => {
     return (
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center gap-8 lg:gap-24">
         <Title text={category.title} />
 
         <div className="flex flex-col items-start gap-8">
