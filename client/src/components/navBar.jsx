@@ -41,7 +41,7 @@ export default function NavBar() {
           to="about"
           smooth={true}
           duration={1000}
-          className="cursor-pointer"
+          className="cursor-pointer hover:glow"
           onClick={() => showMenu()}
         >
           About
@@ -50,7 +50,7 @@ export default function NavBar() {
           to="menu"
           smooth={true}
           duration={1250}
-          className="cursor-pointer"
+          className="cursor-pointer hover:glow"
           onClick={() => showMenu()}
         >
           Menu
@@ -59,7 +59,7 @@ export default function NavBar() {
           to="reservation"
           smooth={true}
           duration={1500}
-          className="cursor-pointer"
+          className="cursor-pointer hover:glow"
           onClick={() => showMenu()}
         >
           Reservation
@@ -68,7 +68,7 @@ export default function NavBar() {
           to="order"
           smooth={true}
           duration={1750}
-          className="cursor-pointer"
+          className="cursor-pointer hover:glow"
           onClick={() => showMenu()}
         >
           Online Order
