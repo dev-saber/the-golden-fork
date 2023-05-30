@@ -8,3 +8,16 @@
         text-shadow: 0 0 20px rgba(237, 145, 0, 1);
     }
 }
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #0F0A06;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ED9100;
+    border-radius: 3px;
+}
