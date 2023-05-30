@@ -3,6 +3,7 @@ import Title from "../components/title";
 
 import MenuCategory from "../components/menuCategory";
 import MenuData from "../services/menuData";
+import NavLink from "../components/navLink";
 
 export default function Menu() {
   const data = MenuData();
@@ -21,6 +22,7 @@ export default function Menu() {
           return <MenuCategory cat={category.title} />;
         })}
       </div>
+      <NavLink text="View Menu" navigation="menu" />
     </div>
   );
 }
