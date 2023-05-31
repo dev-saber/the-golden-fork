@@ -13,8 +13,8 @@ export default {
         bgBlack: "#0F0A06",
       },
       fontFamily: {
-        yellowtail: ['"YellowTail"', 'cursive'],
-        poppins: ['"Poppins"', 'sans-serif'],
+        yellowtail: ['"YellowTail"', "cursive"],
+        poppins: ['"Poppins"', "sans-serif"],
       },
     },
   },

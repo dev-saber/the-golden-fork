@@ -13,7 +13,13 @@ export default function Menu() {
 
         <div className="flex flex-col items-start gap-8">
           {category.meals.map((meal) => {
-            return <Meal title={meal.meal_name} price={meal.meal_price} />;
+            return (
+              <Meal
+                title={meal.meal_name}
+                price={meal.meal_price}
+                image={meal.image_path}
+              />
+            );
           })}
         </div>
       </div>

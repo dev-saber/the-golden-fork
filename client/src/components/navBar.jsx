@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-scroll";
-import Logo from "../assets/images/the-golden-fork-logo.svg";
 
 export default function NavBar() {
   const [isShown, setIsShown] = useState(false);
@@ -8,7 +7,11 @@ export default function NavBar() {
 
   return (
     <div className="max-w-screen-xl flex flex-wrap mx-auto p-4 items-center justify-around md:gap-36">
-      <img src={Logo} className="w-1/5 md:w-[10%] lg:-ml-24" alt="Logo" />
+      <img
+        src="/images/the-golden-fork-logo.svg"
+        className="w-1/5 md:w-[10%] lg:-ml-24"
+        alt="Logo"
+      />
       <button
         data-collapse-toggle="navbar-default"
         type="button"

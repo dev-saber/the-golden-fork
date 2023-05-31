@@ -1,7 +1,5 @@
 import React from "react";
-import Restaurant from "../assets/images/restaurant-img.png";
 import Title from "../components/title";
-import Dish from "../assets/images/meal-dish-img.png";
 
 export default function About() {
   return (
@@ -12,7 +10,7 @@ export default function About() {
       <Title text="About" />
       <div className="flex flex-col items-center gap-8 lg:flex-row lg:gap-0 lg:px-32">
         <img
-          src={Restaurant}
+          src="/images/restaurant-img.png"
           alt="restaurant-img"
           className="w-[70%] md:w-[390px]"
         />
@@ -26,7 +24,11 @@ export default function About() {
         </p>
       </div>
       <div className="flex flex-col items-center gap-8 md:gap-12 lg:gap-0 lg:flex-row-reverse lg:justify-around">
-        <img src={Dish} alt="meal-dish-img" className="w-[70%] md:w-[390px]" />
+        <img
+          src="/images/meal-dish-img.png"
+          alt="meal-dish-img"
+          className="w-[70%] md:w-[390px]"
+        />
         <p className="glow font-bold text-xl px-8 text-center font-yellowtail md:text-4xl md:w-[70%] lg:text-5xl lg:w-[50%]">
           "Every dish is a celebration of fresh and high-quality ingredients."
         </p>

@@ -1,8 +1,5 @@
 import React from "react";
 import Title from "../components/title";
-
-import Reservation from "../assets/images/reservation-img.png";
-import Order from "../assets/images/order-img.png";
 import NavLink from "../components/navLink";
 
 export default function Purchase() {
@@ -13,7 +10,7 @@ export default function Purchase() {
         className="flex flex-col items-center gap-8 lg:flex-row lg:gap-0 lg:px-32"
       >
         <img
-          src={Reservation}
+          src="images/reservation-img.png"
           alt="reservation-img"
           className="w-[70%] md:w-[390px]"
         />
@@ -34,7 +31,11 @@ export default function Purchase() {
         id="order"
         className="flex flex-col items-center gap-8 lg:flex-row-reverse lg:gap-0 lg:px-32"
       >
-        <img src={Order} alt="order-img" className="w-[70%] md:w-[390px]" />
+        <img
+          src="/images/order-img.png"
+          alt="order-img"
+          className="w-[70%] md:w-[390px]"
+        />
         <div className="flex flex-col gap-4 items-center lg:items-start lg:gap-16">
           <p className="font-poppins text-white px-16 text-justify md:text-xl md:w-[85%] lg:text-2xl">
             Experience the art of fine dining from the comfort of your own home
