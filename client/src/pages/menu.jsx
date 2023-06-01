@@ -3,6 +3,7 @@ import Title from "../components/title";
 import MenuData from "../services/menuData";
 import Meal from "../components/meal";
 import Footer from "../components/footer";
+import BackArrow from "../components/backArrow";
 
 export default function Menu() {
   const data = MenuData();
@@ -40,6 +41,7 @@ export default function Menu() {
   });
   return (
     <div className="bg-bgBlack w-full h-[100%] pt-20 gap-24 flex flex-col md:gap-32 text-white">
+      <BackArrow/>
       {content}
       <Footer />
     </div>
