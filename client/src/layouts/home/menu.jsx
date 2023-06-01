@@ -1,9 +1,9 @@
 import React from "react";
-import Title from "../components/title";
+import Title from "../../components/title";
 
-import MenuCategory from "../components/menuCategory";
-import MenuData from "../services/menuData";
-import NavLink from "../components/navLink";
+import MenuCategory from "../../components/menuCategory";
+import MenuData from "../../services/menuData";
+import NavLink from "../../components/navLink";
 
 export default function Menu() {
   const data = MenuData();

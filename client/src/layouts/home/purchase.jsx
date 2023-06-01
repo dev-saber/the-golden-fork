@@ -1,6 +1,6 @@
 import React from "react";
-import Title from "../components/title";
-import NavLink from "../components/navLink";
+import Title from "../../components/title";
+import NavLink from "../../components/navLink";
 
 export default function Purchase() {
   return (
