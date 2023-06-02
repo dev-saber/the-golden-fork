@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="w-full font-yellowtail font-semibold text-xs glow flex justify-around py-4 md:text-lg lg:text-2xl">
+    <div className="bg-bgBlack w-full font-yellowtail font-semibold text-xs glow flex justify-around py-4 md:text-lg lg:text-2xl">
       <p>
         Address:
         <br className="md:hidden" /> 123 Main Street, Rabat

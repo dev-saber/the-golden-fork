@@ -21,7 +21,7 @@ export default function Purchase() {
             journey that will tantalize your taste buds and leave you with
             memories to last a lifetime.
           </p>
-          <NavLink text="Make Your Reservation" />
+          <NavLink text="Make Your Reservation" navigation="reservation" />
         </div>
       </div>
 
