@@ -46,6 +46,7 @@ class CreateReservation extends Controller
                 'customer_id' => $newCustomer->id
             ]);
         }
-        return response('Your reservation has been stored successfully.', 200);
+
+        return response()->view('emails.reservationSuccess', ['message' => 'success'], 200);
     }
 }
