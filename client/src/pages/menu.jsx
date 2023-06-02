@@ -4,6 +4,7 @@ import Meal from "../components/meal";
 import BackArrow from "../components/backArrow";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMenu } from "../redux/slices/menuSlice";
+import LoadingSpinner from "../components/loadingSpin";
 
 export default function Menu() {
   // make the up scroll after the navigation
@@ -59,7 +60,7 @@ export default function Menu() {
   return (
     <div className="bg-bgBlack w-full min-h-screen pt-20 gap-24 flex flex-col md:gap-32 text-white pb-8">
       {loading ? (
-        <div className="text-white text-center mt-8">Loading...</div>
+        <LoadingSpinner />
       ) : (
         <>
           <BackArrow />
