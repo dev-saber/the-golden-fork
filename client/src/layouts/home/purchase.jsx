@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Title from "../../components/title";
 import NavLink from "../../components/navLink";
+import OrderModal from "./orderModal";
 
 export default function Purchase() {
+  const [modal, setModal] = useState(false);
+  const cart = useSelector((state) => state.cart.cart);
+
+  const navigate = useNavigate();
+
+  const handleOrder = () => {
+    cart.length ? navigate("/order") : setModal(true);
+  };
+
   return (
     <div className="flex flex-col items-center mt-8 gap-28 md:mt-16">
       <div
@@ -42,7 +55,18 @@ export default function Purchase() {
             with The Golden Fork's online ordering system. Simply browse our
             menu, select your dishes, and place your order.
           </p>
-          <NavLink text="Make Your Online Order" />
+
+          <motion.button
+            onClick={handleOrder}
+            className="font-poppins text-goldenYellow font-bold cursor-pointer hover:underline md:text-xl lg:ml-16"
+            whileTap={{
+              scale: 0.8,
+            }}
+          >
+            Make Your Online Order
+          </motion.button>
+
+          {modal && <OrderModal open={modal} close={() => setModal(false)} />}
         </div>
       </div>
     </div>
