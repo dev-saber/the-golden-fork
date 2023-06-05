@@ -8,7 +8,11 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: () => {},
+    addToCart: (state, action) => {
+      const { id } = action.payload;
+      const alreadyAdded = state.cart.find((meal) => meal.id === id);
+      !alreadyAdded && (state.cart = [...state.cart, action.payload]);
+    },
     removeFromCart: () => {},
     modifyQuantity: () => {},
   },

@@ -1,9 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../redux/slices/cartSlice";
 
-export default function Meal({ title, price, image }) {
+export default function Meal({ id, title, price, image }) {
+  const cart = useSelector((state) => state.cart.cart);
+  const dispatch = useDispatch();
+
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center gap-4">
       <div className="flex items-center w-auto">
         <div className="w-[150px] md:w-[200px] lg:w-[300px] mx-5">
           <img src={`/images/${image}`} alt="" className="w-4/5 lg:w-[190px]" />
@@ -19,19 +24,22 @@ export default function Meal({ title, price, image }) {
       </div>
       <motion.p
         className="font-poppins text-goldenYellow font-bold cursor-pointer hover:underline md:text-xl lg:ml-16"
-        // onClick={() =>
-        //   console.log({
-        //     meal: title,
-        //     price: price,
-        //     quantity: 1,
-        //     total: price,
-        //   })
-        // }
+        onClick={() => {
+          dispatch(
+            addToCart({
+              id: id,
+              meal: title,
+              price: price,
+              quantity: 1,
+              total: price,
+            })
+          );
+        }}
         whileTap={{
           scale: 0.8,
         }}
       >
-        test
+        Add To Cart
       </motion.p>
     </div>
   );

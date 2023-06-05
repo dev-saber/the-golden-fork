@@ -7,14 +7,14 @@ import { fetchMenu } from "../redux/slices/menuSlice";
 import LoadingSpinner from "../components/loadingSpin";
 
 export default function Menu() {
-  // make the up scroll after the navigation
-  window.scrollTo(0, 0);
-
   const data = useSelector((state) => state.menu.menu);
   const loading = useSelector((state) => state.menu.loading);
 
   const dispatch = useDispatch();
   useEffect(() => {
+    // make the up scroll after the data fetching
+    window.scrollTo(0, 0);
+
     !data.length && dispatch(fetchMenu());
   }, []);
 
@@ -31,6 +31,7 @@ export default function Menu() {
             {category.meals.slice(0, 2).map((meal) => {
               return (
                 <Meal
+                  id={meal.id}
                   title={meal.meal_name}
                   price={meal.meal_price}
                   image={meal.image_path}
@@ -43,6 +44,7 @@ export default function Menu() {
             {category.meals.slice(2).map((meal) => {
               return (
                 <Meal
+                  id={meal.id}
                   title={meal.meal_name}
                   price={meal.meal_price}
                   image={meal.image_path}
