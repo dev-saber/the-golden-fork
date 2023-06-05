@@ -1,10 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useSelector, useDispatch } from "react-redux";
-import { addToCart } from "../redux/slices/cartSlice";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/slices/cartSlice";
 
 export default function Meal({ id, title, price, image }) {
-  const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
 
   return (

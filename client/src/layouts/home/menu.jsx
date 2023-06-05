@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Title from "../../components/title";
-import MenuCategory from "../../components/menuCategory";
+import MenuCategory from "./menuCategory";
 import NavLink from "../../components/navLink";
 import { fetchMenu } from "../../redux/slices/menuSlice";
 

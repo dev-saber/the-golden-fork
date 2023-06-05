@@ -1,6 +1,6 @@
 import React from "react";
 import BackArrow from "../components/backArrow";
-import ReservationForm from "../components/reservationForm";
+import ReservationForm from "../layouts/reservation/reservationForm";
 
 export default function Reservation() {
   return (

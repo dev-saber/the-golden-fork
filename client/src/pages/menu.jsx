@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import Title from "../components/title";
-import Meal from "../components/meal";
-import BackArrow from "../components/backArrow";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMenu } from "../redux/slices/menuSlice";
-import LoadingSpinner from "../components/loadingSpin";
+import LoadingSpinner from "../layouts/menu/loadingSpin";
+import Title from "../components/title";
+import Meal from "../layouts/menu/meal";
+import BackArrow from "../components/backArrow";
 
 export default function Menu() {
   const data = useSelector((state) => state.menu.menu);
