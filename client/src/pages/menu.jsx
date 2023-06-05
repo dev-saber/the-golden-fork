@@ -12,7 +12,6 @@ export default function Menu() {
 
   const data = useSelector((state) => state.menu.menu);
   const loading = useSelector((state) => state.menu.loading);
-  console.log(data);
 
   const dispatch = useDispatch();
   useEffect(() => {
