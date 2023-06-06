@@ -1,5 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
+import * as Yup from "yup";
+
 export default function ReservationForm() {
   const reservation = useFormik({
     initialValues: {
@@ -9,42 +11,99 @@ export default function ReservationForm() {
       time: "",
       peopleNum: 0,
     },
-  });
-  return (
-    <form action="#" method="get" className="flex flex-col items-center">
-      <div className="flex flex-col items-start">
-        <p className="font-yellowtail text-goldenYellow">
-          Enter Your Full Name
-        </p>
-        <input type="text" className="" />
-      </div>
-      <div className="flex flex-col items-start">
-        <p className="font-yellowtail text-goldenYellow">
-          Enter Your Email Address
-        </p>
-        <input type="email" className="" />
-      </div>
-      <div className="flex">
-        <div class="flex">
-          <div class="flex-shrink-0">
-            <img src="your_image_url" alt="Image" class="w-32 h-32" />
-          </div>
-          <div class="relative">
-            <select
-              id="states-button"
-              data-dropdown-toggle="dropdown-states"
-              class="z-10 block w-full py-2.5 px-4 text-sm font-medium text-gray-500 bg-gray-100 border border-gray-300 rounded-r-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
-            >
-              <option value="state1">State 1</option>
-              <option value="state2">State 2</option>
-              <option value="state3">State 3</option>
-            </select>
-          </div>
-        </div>
+    validationSchema: Yup.object({
+      fullName: Yup.string()
+        .max(15, "Only 15 caracters are allowed")
+        .min(8, "Enter at least 8 characters")
+        .required("Required"),
 
-        <input type="text" className="" />
-        <input type="text" className="" />
+      email: Yup.string()
+        .email("Pease enter a valid email address")
+        .required("Required"),
+
+      date: Yup.date().required("Please enter a valid date"),
+
+      time: Yup.string().test(
+        "valid-time",
+        "Please enter a valid time format",
+        (value) => {
+          // Regular expression to validate time in HH:MM format
+          const timeRegex = /^(?:[01]\d|2[0-3]):[0-5]\d$/;
+          return timeRegex.test(value);
+        }
+      ),
+
+      peopleNum: Yup.number()
+        .max(12, "12 people is the max for each reservation")
+        .moreThan(0, "Please enter a valid number"),
+    }),
+    onSubmit: (values) => console.log(values),
+  });
+
+  return (
+    <form
+      action="#"
+      method="get"
+      className="flex flex-col items-center"
+      onSubmit={reservation.handleSubmit}
+    >
+      <input
+        name="fullName"
+        type="text"
+        value={reservation.values.fullName}
+        onChange={reservation.handleChange}
+        onBlur={reservation.handleBlur}
+      />
+      {reservation.touched.fullName && reservation.errors.fullName && (
+        <p className="text-red-700">{reservation.errors.fullName}</p>
+      )}
+
+      <input
+        name="email"
+        type="email"
+        value={reservation.values.email}
+        onChange={reservation.handleChange}
+        onBlur={reservation.handleBlur}
+      />
+      {reservation.touched.email && reservation.errors.email && (
+        <p className="text-red-700">{reservation.errors.email}</p>
+      )}
+
+      <div className="flex flex-col items-center">
+        <div className="flex">
+          <input
+            type="date"
+            name="date"
+            value={reservation.values.date}
+            onChange={reservation.handleChange}
+            onBlur={reservation.handleBlur}
+          />
+          <input
+            type="time"
+            name="time"
+            value={reservation.values.time}
+            onChange={reservation.handleChange}
+            onBlur={reservation.handleBlur}
+          />
+        </div>
+        {(reservation.touched.date || reservation.touched.time) &&
+          (reservation.errors.date || reservation.errors.time) && (
+            <p className="text-red-700">
+              Please enter a valid date and time format
+            </p>
+          )}
       </div>
+      <input
+        type="number"
+        name="peopleNum"
+        value={reservation.values.peopleNum}
+        onChange={reservation.handleChange}
+        onBlur={reservation.handleBlur}
+      />
+      {reservation.touched.peopleNum && reservation.errors.peopleNum && (
+        <p className="text-red-700">{reservation.errors.peopleNum}</p>
+      )}
+      <button className="text-white">Confirm My Reservation</button>
     </form>
   );
 }
