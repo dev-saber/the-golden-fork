@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMenu } from "../redux/slices/menuSlice";
 
-import LoadingSpinner from "../layouts/menu/loadingSpin";
+import LoadingSpin from "../components/loadingSpin";
 import Title from "../components/title";
 import Meal from "../layouts/menu/meal";
 import BackArrow from "../components/backArrow";
@@ -67,7 +67,7 @@ export default function Menu() {
   return (
     <div className="bg-bgBlack w-full min-h-screen pt-20 gap-24 flex flex-col md:gap-32 text-white pb-8">
       {loading ? (
-        <LoadingSpinner />
+        <LoadingSpin />
       ) : (
         <>
           <BackArrow />
