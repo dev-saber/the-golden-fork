@@ -1,10 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/slices/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addToModal } from "../../redux/slices/mealModalSlice";
 
 export default function Meal({ id, title, price, image, open }) {
   const dispatch = useDispatch();
+  const meal = useSelector((state) => state.mealModal.data);
 
   return (
     <div className="flex flex-col items-center gap-4">
@@ -23,19 +24,16 @@ export default function Meal({ id, title, price, image, open }) {
       </div>
       <motion.p
         className="font-poppins text-goldenYellow font-bold cursor-pointer hover:underline md:text-xl lg:ml-16"
-        onClick={ open
-        //   () => {
-        //   dispatch(
-        //     addToCart({
-        //       id: id,
-        //       meal: title,
-        //       price: price,
-        //       quantity: 1,
-        //       total: price,
-        //     })
-        //   );
-        // }
-      }
+        onClick={() => {
+          open();
+          dispatch(
+            addToModal({
+              id: id,
+              title: title,
+              price: price,
+            })
+          );
+        }}
         whileTap={{
           scale: 0.8,
         }}
