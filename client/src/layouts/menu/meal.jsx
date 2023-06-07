@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlice";
 
-export default function Meal({ id, title, price, image }) {
+export default function Meal({ id, title, price, image, open }) {
   const dispatch = useDispatch();
 
   return (
@@ -23,17 +23,19 @@ export default function Meal({ id, title, price, image }) {
       </div>
       <motion.p
         className="font-poppins text-goldenYellow font-bold cursor-pointer hover:underline md:text-xl lg:ml-16"
-        onClick={() => {
-          dispatch(
-            addToCart({
-              id: id,
-              meal: title,
-              price: price,
-              quantity: 1,
-              total: price,
-            })
-          );
-        }}
+        onClick={ open
+        //   () => {
+        //   dispatch(
+        //     addToCart({
+        //       id: id,
+        //       meal: title,
+        //       price: price,
+        //       quantity: 1,
+        //       total: price,
+        //     })
+        //   );
+        // }
+      }
         whileTap={{
           scale: 0.8,
         }}
