@@ -70,7 +70,7 @@ export default function Purchase() {
             <ModalWindow open={modal} close={() => setModal(false)}>
               <p className="font-poppins text-center">
                 The cart is empty, please have a look on the Menu page and add
-                some meats to your order.
+                some meals to your order.
               </p>
             </ModalWindow>
           )}
