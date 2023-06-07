@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDom from "react-dom";
 
-function OrderModal({ open, close }) {
+function ModalWindow({ open, close, children }) {
   !open && null;
-
   return ReactDom.createPortal(
-    <div>
+    <>
       <div
         className={`${open ? "fixed inset-0 bg-black opacity-50" : "hidden"}`}
       ></div>
@@ -15,10 +14,7 @@ function OrderModal({ open, close }) {
         }`}
       >
         <div className="bg-goldenYellow relative rounded-lg w-[90%] p-8 lg:w-1/2 lg:text-xl">
-          <p className="font-poppins text-center">
-            The cart is empty, please have a look on the Menu page and add some
-            meats to your order.
-          </p>
+          {children}
           <div
             className="absolute right-5 top-3 text-xl cursor-pointer"
             onClick={close}
@@ -27,9 +23,9 @@ function OrderModal({ open, close }) {
           </div>
         </div>
       </div>
-    </div>,
+    </>,
     document.querySelector("#portal")
   );
 }
 
-export default OrderModal;
+export default ModalWindow;

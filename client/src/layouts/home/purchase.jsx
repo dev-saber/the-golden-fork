@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Title from "../../components/title";
 import NavLink from "../../components/navLink";
-import OrderModal from "./orderModal";
+import ModalWindow from "../../components/modalWindow";
 
 export default function Purchase() {
   const [modal, setModal] = useState(false);
@@ -66,7 +66,14 @@ export default function Purchase() {
             Make Your Online Order
           </motion.button>
 
-          {modal && <OrderModal open={modal} close={() => setModal(false)} />}
+          {modal && (
+            <ModalWindow open={modal} close={() => setModal(false)}>
+              <p className="font-poppins text-center">
+                The cart is empty, please have a look on the Menu page and add
+                some meats to your order.
+              </p>
+            </ModalWindow>
+          )}
         </div>
       </div>
     </div>
