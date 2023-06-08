@@ -16,8 +16,14 @@ export const cartSlice = createSlice({
       }
       state.cart = [...state.cart, action.payload];
     },
+
     removeFromCart: () => {},
-    modifyQuantity: () => {},
+
+    modifyQuantity: (state, action) => {
+      const { id, quantity } = action.payload;
+      const meal = state.cart.find((meal) => meal.id === id);
+      meal.quantity = quantity;
+    },
   },
 });
 
