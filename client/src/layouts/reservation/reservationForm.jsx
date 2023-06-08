@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
+
 import { reserve } from "../../api/reserve.js";
 import LoadingSpin from "../../components/loadingSpin.jsx";
 import ModalWindow from "../../components/modalWindow.jsx";
@@ -9,6 +11,17 @@ export default function ReservationForm() {
   const [loading, setLoading] = useState(false);
   const [responseMessage, setResponseMessage] = useState(null);
   const [showModal, setShowModal] = useState(false);
+
+  const navigate = useNavigate();
+
+  // after sending the verification email, the customer is redirected to the home page
+  const handleModalClosing = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      navigate("/");
+    }, 300);
+  };
 
   const reservation = useFormik({
     initialValues: {
@@ -44,8 +57,6 @@ export default function ReservationForm() {
         .max(12, "12 people is the max for each reservation")
         .moreThan(0, "Please enter a valid number"),
     }),
-    // onSubmit: (values) => console.log(values),
-    // onSubmit: values => reserve(values),
     onSubmit: (values) => {
       setLoading(true);
       reserve(values)
@@ -145,7 +156,13 @@ export default function ReservationForm() {
       {loading && <LoadingSpin />}
 
       {/* Once the api call succeed and the message is returned, a modal window is shown */}
-      <ModalWindow open={showModal} close={() => setShowModal(false)}>
+      <ModalWindow
+        open={showModal}
+        close={() => {
+          setShowModal(false);
+          handleModalClosing();
+        }}
+      >
         <p className="font-poppins text-center">{responseMessage}</p>
       </ModalWindow>
     </>
