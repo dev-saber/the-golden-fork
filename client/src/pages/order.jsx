@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BackArrow from "../components/backArrow";
 import TableRow from "../layouts/order/tableRow";
 import { useSelector } from "react-redux";
 
 function Order() {
-  const orders = useSelector((state) => state.cart.cart);
+  const order = useSelector((state) => state.cart.cart);
   const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const newTotal = order.reduce((acc, meal) => {
+      return acc + meal.price * meal.quantity;
+    }, 0);
+    setTotal(newTotal);
+  }, [order]);
 
   return (
     <div className="bg-bgBlack w-full h-screen pt-20 gap-24 flex flex-col md:gap-32 items-center pb-8">
@@ -35,7 +42,7 @@ function Order() {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
+            {order.map((order) => (
               <TableRow
                 id={order.id}
                 meal={order.title}
