@@ -27,21 +27,20 @@ class CreateReservation extends Controller
 
         if ($old_custommer && true) {
             Reservation::create([
-                'reservation_date' => fake()->date(),
-                'reservation_time' => fake()->dateTime(),
+                'reservation_date' => $request->reservation_date,
+                'reservation_time' => $request->reservation_time,
                 'number_of_people' => $request->number_of_people,
                 'customer_id' => $old_custommer->id
             ]);
         } else {
             $newCustomer = Customer::create([
                 'name' => $request->name,
-                'email' => $request->email,
-                'is_gmail' => $request->is_gmail === "1" ? true : false
+                'email' => $request->email
             ]);
 
             Reservation::create([
-                'reservation_date' => fake()->date(),
-                'reservation_time' => fake()->dateTime(),
+                'reservation_date' => $request->reservation_date,
+                'reservation_time' => $request->reservation_time,
                 'number_of_people' => $request->number_of_people,
                 'customer_id' => $newCustomer->id
             ]);

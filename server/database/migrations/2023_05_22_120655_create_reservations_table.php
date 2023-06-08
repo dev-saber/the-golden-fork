@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->date('reservation_date');
-            $table->dateTime('reservation_time');
+            $table->time('reservation_time');
             $table->integer('number_of_people');
             $table->foreignId('customer_id');
             $table->timestamps();
