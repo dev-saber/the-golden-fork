@@ -4,6 +4,7 @@ import Menu from "../pages/menu";
 import NotFound from "../pages/notFound";
 import Reservation from "../pages/reservation";
 import Order from "../pages/order";
+import OrderMiddleware from "../middlewares/orderMiddleware";
 
 export default function Routing() {
   return (
@@ -11,7 +12,14 @@ export default function Routing() {
       <Route path="/" element={<Home />} />
       <Route path="/menu" element={<Menu />} />
       <Route path="/reservation" element={<Reservation />} />
-      <Route path="/order" element={<Order />} />
+      <Route
+        path="/order"
+        element={
+          <OrderMiddleware>
+            <Order />
+          </OrderMiddleware>
+        }
+      />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
