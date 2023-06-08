@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-import { modifyQuantity } from "../../redux/slices/cartSlice";
+import { modifyQuantity, removeFromCart } from "../../redux/slices/cartSlice";
 import { useEffect } from "react";
 
 function TableRow({ id, meal, price, count }) {
@@ -11,7 +11,7 @@ function TableRow({ id, meal, price, count }) {
   useEffect(() => {
     dispatch(modifyQuantity({ id: id, quantity: quantity }));
   }, [quantity]);
-  
+
   return (
     <tr className="border-y border-goldenYellow">
       <td className="px-6 py-4 font-semibold text-white">{meal}</td>
@@ -83,6 +83,9 @@ function TableRow({ id, meal, price, count }) {
         <motion.p
           whileTap={{
             scale: 0.8,
+          }}
+          onClick={() => {
+            dispatch(removeFromCart(id));
           }}
         >
           Remove
