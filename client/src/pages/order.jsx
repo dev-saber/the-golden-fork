@@ -3,6 +3,7 @@ import BackArrow from "../components/backArrow";
 import TableRow from "../layouts/order/tableRow";
 import { useSelector } from "react-redux";
 import LoadingSpin from "../components/loadingSpin";
+import StripeContainer from "../layouts/order/stripeContainer";
 
 function Order() {
   const order = useSelector((state) => state.cart.cart);
@@ -79,6 +80,7 @@ function Order() {
           </table>
         </div>
       </div>
+      <StripeContainer />
     </>
   );
 }
