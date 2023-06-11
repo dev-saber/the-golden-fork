@@ -1,18 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { motion } from "framer-motion";
 
-export default function OrderForm({prev}) {
-  const [loading, setLoading] = useState(false);
-
+export default function OrderForm({ prev, next, formValues, setFormValues }) {
   const order = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      address: "",
-      delivery_time: "",
-    },
+    initialValues: formValues,
     validationSchema: Yup.object({
       name: Yup.string()
         .max(15, "Only 25 caracters are allowed")
@@ -35,10 +28,12 @@ export default function OrderForm({prev}) {
         }
       ),
     }),
-    onSubmit: (event, values) => {
-      event.preventDefault();
+    onSubmit: (values) => {
+      next();
+      setFormValues(values);
     },
   });
+
   return (
     <>
       <form
@@ -88,17 +83,29 @@ export default function OrderForm({prev}) {
         {order.touched.delivery_time && order.errors.delivery_time && (
           <p className="text-red-700">{order.errors.delivery_time}</p>
         )}
-      </form>
 
-      <motion.p
-        whileTap={{
-          scale: 0.8,
-        }}
-        className="font-poppins text-goldenYellow font-bold cursor-pointer hover:underline md:text-xl lg:ml-16"
-        onClick={prev}
-      >
-        Go Back
-      </motion.p>
+        <div className="flex gap-8">
+          <motion.p
+            whileTap={{
+              scale: 0.8,
+            }}
+            className="font-poppins text-goldenYellow font-bold cursor-pointer hover:underline md:text-xl lg:ml-16"
+            onClick={prev}
+          >
+            Go Back
+          </motion.p>
+
+          <motion.button
+            whileTap={{
+              scale: 0.8,
+            }}
+            type="submit"
+            className="font-poppins text-goldenYellow font-bold cursor-pointer hover:underline md:text-xl lg:ml-16"
+          >
+            Next
+          </motion.button>
+        </div>
+      </form>
     </>
   );
 }
