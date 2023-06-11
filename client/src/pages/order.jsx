@@ -9,7 +9,7 @@ import PaymentForm from "../layouts/order/paymentForm";
 function Order() {
   const order = useSelector((state) => state.cart.cart);
   const [total, setTotal] = useState(0);
-  
+
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
@@ -43,7 +43,7 @@ function Order() {
       formValues={formValues}
       setFormValues={setFormValues}
     />,
-    <PaymentForm prev={() => setStep((prev) => prev - 1)} />,
+    <PaymentForm prev={() => setStep((prev) => prev - 1)} data={formValues} />,
   ];
 
   return (

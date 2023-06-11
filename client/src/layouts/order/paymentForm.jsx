@@ -1,10 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { OrderInfo } from "../../redux/slices/orderSlice";
 
-export default function PaymentForm({ prev }) {
-  const handleOrder = () => {};
+export default function PaymentForm({ prev, data }) {
+  const dispatch = useDispatch();
+
+  const handleOrder = () => {
+    dispatch(OrderInfo(data));
+  };
+
   return (
-    <form action="" method="post">
+    <form action="" method="post" onSubmit={(event) => event.preventDefault()}>
       <div className="flex gap-8">
         <motion.p
           whileTap={{
