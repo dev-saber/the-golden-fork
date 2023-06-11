@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('client_address');
             $table->dateTime('delivery_time');
-            $table->float('amount', 4, 2);
-            $table->enum('payment_option', ['PayPal', 'Stripe']);
+            $table->float('amount', 6, 2);
             $table->foreignId('customer_id');
             $table->timestamps();
         });

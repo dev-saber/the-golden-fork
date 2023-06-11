@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import LoadingSpin from "../components/loadingSpin";
 import CartTable from "../layouts/order/cartTable";
 import OrderForm from "../layouts/order/orderForm";
-import PaymentForm from "../layouts/order/paymentForm";
 
 function Order() {
   const order = useSelector((state) => state.cart.cart);
@@ -39,11 +38,10 @@ function Order() {
     />,
     <OrderForm
       prev={() => setStep((prev) => prev - 1)}
-      next={() => setStep((prev) => prev + 1)}
       formValues={formValues}
       setFormValues={setFormValues}
+      total={total}
     />,
-    <PaymentForm prev={() => setStep((prev) => prev - 1)} data={formValues} />,
   ];
 
   return (

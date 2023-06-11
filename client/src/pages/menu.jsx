@@ -35,11 +35,11 @@ export default function Menu() {
             {category.meals.slice(0, 2).map((meal) => {
               return (
                 <Meal
-                  id={meal.id}
+                  id={meal.stripe_id}
                   title={meal.meal_name}
                   price={meal.meal_price}
                   image={meal.image_path}
-                  key={meal.id}
+                  key={meal.stripe_id}
                   open={() => setModal(true)}
                 />
               );
@@ -49,11 +49,11 @@ export default function Menu() {
             {category.meals.slice(2).map((meal) => {
               return (
                 <Meal
-                  id={meal.id}
+                  id={meal.stripe_id}
                   title={meal.meal_name}
                   price={meal.meal_price}
                   image={meal.image_path}
-                  key={meal.id}
+                  key={meal.stripe_id}
                   open={() => setModal(true)}
                 />
               );

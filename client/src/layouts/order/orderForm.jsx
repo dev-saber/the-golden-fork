@@ -2,8 +2,14 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
-export default function OrderForm({ prev, next, formValues, setFormValues }) {
+export default function OrderForm({ prev, formValues, setFormValues, total }) {
+  const orderDetails = {
+    mealsInfo: useSelector((state) => state.cart.cart),
+    amount: total,
+  };
+
   const order = useFormik({
     initialValues: formValues,
     validationSchema: Yup.object({
@@ -29,10 +35,15 @@ export default function OrderForm({ prev, next, formValues, setFormValues }) {
       ),
     }),
     onSubmit: (values) => {
-      next();
-      setFormValues(values);
+      const userInfo = values;
+      console.log(userInfo, orderDetails);
     },
   });
+
+  const handlePrev = () => {
+    setFormValues(order.values);
+    prev();
+  };
 
   return (
     <>
@@ -90,7 +101,7 @@ export default function OrderForm({ prev, next, formValues, setFormValues }) {
               scale: 0.8,
             }}
             className="font-poppins text-goldenYellow font-bold cursor-pointer hover:underline md:text-xl lg:ml-16"
-            onClick={prev}
+            onClick={handlePrev}
           >
             Go Back
           </motion.p>
@@ -102,7 +113,7 @@ export default function OrderForm({ prev, next, formValues, setFormValues }) {
             type="submit"
             className="font-poppins text-goldenYellow font-bold cursor-pointer hover:underline md:text-xl lg:ml-16"
           >
-            Next
+            Checkout
           </motion.button>
         </div>
       </form>
