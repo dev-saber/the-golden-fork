@@ -5,13 +5,7 @@ import { motion } from "framer-motion";
 
 function CartTable({ next, loading, order, total }) {
   return (
-    <div
-      className={`${
-        loading
-          ? "hidden"
-          : "bg-bgBlack w-full h-screen pt-20 gap-24 flex flex-col  items-center pb-8"
-      }`}
-    >
+    <>
       <BackArrow />
       <p className="glow font-bold text-xl px-8 text-center font-yellowtail md:text-4xl sm:w-1/2 md:w-[70%] lg:text-5xl lg:w-[65%]">
         Place your food order online from the confort of your own house
@@ -67,7 +61,7 @@ function CartTable({ next, loading, order, total }) {
       >
         Purchase
       </motion.p>
-    </div>
+    </>
   );
 }
 
