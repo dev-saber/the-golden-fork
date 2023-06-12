@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
+import { paymentCheckout } from "../../api/paymentCheckout";
 
 export default function OrderForm({ prev, formValues, setFormValues, total }) {
   const orderDetails = {
@@ -36,7 +37,7 @@ export default function OrderForm({ prev, formValues, setFormValues, total }) {
     }),
     onSubmit: (values) => {
       const userInfo = values;
-      console.log(userInfo, orderDetails);
+      paymentCheckout(userInfo, orderDetails)
     },
   });
 
