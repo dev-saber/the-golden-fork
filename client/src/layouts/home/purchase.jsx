@@ -24,6 +24,7 @@ export default function Purchase() {
       >
         <img
           src="images/reservation-img.png"
+          loading="lazy"
           alt="reservation-img"
           className="w-[70%] md:w-[390px]"
         />
@@ -46,6 +47,7 @@ export default function Purchase() {
       >
         <img
           src="/images/order-img.png"
+          loading="lazy"
           alt="order-img"
           className="w-[70%] md:w-[390px]"
         />

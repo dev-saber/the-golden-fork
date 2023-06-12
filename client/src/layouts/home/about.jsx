@@ -11,6 +11,7 @@ export default function About() {
       <div className="flex flex-col items-center gap-8 lg:flex-row lg:gap-0 lg:px-32">
         <img
           src="/images/restaurant-img.png"
+          loading="lazy"
           alt="restaurant-img"
           className="w-[70%] md:w-[390px]"
         />
@@ -26,6 +27,7 @@ export default function About() {
       <div className="flex flex-col items-center gap-8 md:gap-12 lg:gap-0 lg:flex-row-reverse lg:justify-around">
         <img
           src="/images/meal-dish-img.png"
+          loading="lazy"
           alt="meal-dish-img"
           className="w-[70%] md:w-[390px]"
         />

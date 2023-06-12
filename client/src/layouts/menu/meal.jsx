@@ -11,7 +11,12 @@ export default function Meal({ id, title, price, image, open }) {
     <div className="flex flex-col items-center gap-4">
       <div className="flex items-center w-auto">
         <div className="w-[150px] md:w-[200px] lg:w-[300px] mx-5">
-          <img src={`/images/${image}`} alt="" className="w-4/5 lg:w-[190px]" />
+          <img
+            src={`/images/${image}`}
+            loading="lazy"
+            alt=""
+            className="w-4/5 lg:w-[190px]"
+          />
         </div>
         <div className="flex flex-col items-start w-1/3 lg:w-[170px] lg:-ml-28 xl:w-[320px] lg:gap-4">
           <p className="font-yellowtail text-lg sm:text-xl md:text-2xl lg:text-3xl">

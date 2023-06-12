@@ -6,6 +6,7 @@ export default function MenuCategory({ cat }) {
       <img
         src={`/images/${cat}-img.png`}
         alt={cat}
+        loading="lazy"
         className="w-3/4 md:w-full"
       />
       <span className="font-yellowtail text-white text-3xl md:text-5xl">
