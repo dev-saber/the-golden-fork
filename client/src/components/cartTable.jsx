@@ -1,15 +1,10 @@
 import React from "react";
-import BackArrow from "../../components/backArrow";
-import TableRow from "./tableRow";
+import TableRow from "../layouts/order/tableRow";
 import { motion } from "framer-motion";
 
-function CartTable({ next, loading, order, total }) {
+function CartTable({ order, total, action, actionText, bg }) {
   return (
-    <>
-      <BackArrow />
-      <p className="glow font-bold text-xl px-8 text-center font-yellowtail md:text-4xl sm:w-1/2 md:w-[70%] lg:text-5xl lg:w-[65%]">
-        Place your food order online from the confort of your own house
-      </p>
+    <div className="flex flex-col items-center gap-4">
       <div className="relative overflow-x-auto">
         <table className="border-2 border-goldenYellow text-sm text-left sm:rounded-lg">
           <thead className="text-lg text-center font-yellowtail text-goldenYellow">
@@ -56,12 +51,12 @@ function CartTable({ next, loading, order, total }) {
         whileTap={{
           scale: 0.8,
         }}
-        className="font-poppins text-goldenYellow font-bold cursor-pointer hover:underline md:text-xl lg:ml-16"
-        onClick={next}
+        className="font-poppins text-goldenYellow font-bold text-center cursor-pointer hover:underline md:text-xl"
+        onClick={action}
       >
-        Purchase
+        {actionText}
       </motion.p>
-    </>
+    </div>
   );
 }
 

@@ -70,10 +70,18 @@ export default function Purchase() {
 
           {modal && (
             <ModalWindow open={modal} close={() => setModal(false)}>
-              <p className="font-poppins text-center">
-                The cart is empty, please have a look on the Menu page and add
-                some meals to your order.
-              </p>
+              <div className="flex flex-col items-center gap-4">
+                <p className="font-poppins text-center">
+                  The cart is empty, please add some meals to your order.
+                </p>
+                <div className="w-3/5 md:w-1/2">
+                  <NavLink
+                    text="Add meals to cart"
+                    navigation="menu"
+                    color="bgBlack"
+                  />
+                </div>
+              </div>
             </ModalWindow>
           )}
         </div>

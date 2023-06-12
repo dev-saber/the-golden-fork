@@ -6,12 +6,12 @@ export default function BackArrow() {
   const navigate = useNavigate();
   return (
     <div
-      className="absolute left-24 lg:left-28 top-24"
+      className="absolute -mt-8 left-8 md:mt-0 md:left-24 lg:left-28 lg:top-24"
       onClick={() => navigate("/")}
     >
       <motion.img
         src="/images/arrow.svg"
-        className="w-[32px] cursor-pointer"
+        className="w-4/5 md:w-[32px] cursor-pointer"
         alt="arrow"
         whileTap={{
           scale: 0.8,

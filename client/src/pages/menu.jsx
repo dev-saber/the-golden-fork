@@ -1,26 +1,44 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMenu } from "../redux/slices/menuSlice";
+import { motion } from "framer-motion";
 
 import LoadingSpin from "../components/loadingSpin";
 import Title from "../components/title";
 import Meal from "../layouts/menu/meal";
 import BackArrow from "../components/backArrow";
 import AddToCart from "../layouts/menu/addToCart";
+import ModalWindow from "../components/modalWindow";
+import CartTable from "../components/cartTable";
+import { useNavigate } from "react-router-dom";
 
 export default function Menu() {
   const data = useSelector((state) => state.menu.menu);
   const loading = useSelector((state) => state.menu.loading);
 
   const [modal, setModal] = useState(false);
+  const [cart, setCart] = useState(false);
+
+  const order = useSelector((state) => state.cart.cart);
+  const [total, setTotal] = useState(0);
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     // make the up scroll after the data fetching
     window.scrollTo(0, 0);
 
     !data.length && dispatch(fetchMenu());
   }, []);
+
+  useEffect(() => {
+    const newTotal = order.reduce((acc, meal) => {
+      return acc + meal.price * meal.quantity;
+    }, 0);
+    setTotal(newTotal);
+  }, [order]);
 
   const content = data.map((category) => {
     return (
@@ -71,6 +89,38 @@ export default function Menu() {
       ) : (
         <>
           <BackArrow />
+          <div
+            className="absolute right-4 -mt-10 md:right-24 md:mt-4"
+            onClick={() => setCart(true)}
+          >
+            <motion.img
+              src="/images/cart.svg"
+              className="w-3/5 md:w-[32px] cursor-pointer"
+              alt="cart"
+              whileTap={{
+                scale: 0.8,
+              }}
+            />
+          </div>
+          {cart && (
+            <ModalWindow open={cart} close={() => setCart(false)} bg="bgBlack">
+              {!order.length ? (
+                <div className="text-goldenYellow text-center">
+                  Your cart is empty
+                </div>
+              ) : (
+                <div className="max-h-96 overflow-y-auto">
+                  <CartTable
+                    action={() => navigate("/order")}
+                    order={order}
+                    total={total}
+                    actionText="Go to Checkout"
+                  />
+                </div>
+              )}
+            </ModalWindow>
+          )}
+
           {content}
         </>
       )}
