@@ -1,18 +1,34 @@
 import axios from "axios";
-import { loadStripe } from "@stripe/stripe-js";
 
-export const paymentCheckout = async (customerInfo, orderInfo) => {
-    // const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
-    // try {
-    //   const response = await axios.post("http://localhost:3001/checkout", {
-    //     // customer: customerInfo,
-    //     items: orderInfo,
-    //   });
-    //   const stripe = await stripePromise;
-  
-    //   await stripe.redirectToCheckout({ sessionId: response.data.id });
-    // } catch (error) {
-    //   console.error(error);
-    // }
-  };
-  
+export const paymentCheckout = (customerInfo, orderInfo) => {
+  axios
+    .post(
+      "http://localhost:3001/checkout",
+      JSON.stringify({
+        items: [
+          {
+            id: 1,
+            quantity: 3,
+            price: 28,
+            name: "Golden Fried Calamari with Spicy Aioli",
+          },
+        ],
+      }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+      }
+    )
+    .then((response) => {
+      if (response.data && response.data.url) {
+        window.location = response.data.url;
+      } else {
+        console.log("Invalid response format");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
