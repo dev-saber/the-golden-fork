@@ -1,18 +1,12 @@
 import axios from "axios";
 
 export const paymentCheckout = (customerInfo, orderInfo) => {
+  // console.log(orderInfo)
   axios
     .post(
       "http://localhost:3001/checkout",
       JSON.stringify({
-        items: [
-          {
-            id: 1,
-            quantity: 3,
-            price: 28,
-            name: "Golden Fried Calamari with Spicy Aioli",
-          },
-        ],
+        items: orderInfo.mealsInfo,
       }),
       {
         headers: {

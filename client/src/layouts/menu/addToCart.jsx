@@ -102,7 +102,7 @@ function AddToCart({ open, close }) {
             dispatch(
               addToCart({
                 id: meal.id,
-                title: meal.title,
+                name: meal.title,
                 price: meal.price,
                 quantity: quantity,
               })
