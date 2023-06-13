@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import { reserve } from "../../api/reserve.js";
 import LoadingSpin from "../../components/loadingSpin.jsx";
@@ -33,7 +34,7 @@ export default function ReservationForm() {
     },
     validationSchema: Yup.object({
       name: Yup.string()
-        .max(15, "Only 15 caracters are allowed")
+        .max(25, "Only 25 caracters are allowed")
         .min(8, "Enter at least 8 characters")
         .required("Required"),
 
@@ -41,17 +42,13 @@ export default function ReservationForm() {
         .email("Pease enter a valid email address")
         .required("Required"),
 
-      reservation_date: Yup.date().required("Please enter a valid date"),
+      reservation_date: Yup.date().required(),
 
-      reservation_time: Yup.string().test(
-        "valid-time",
-        "Please enter a valid time format",
-        (value) => {
-          // Regular expression to validate time in HH:MM format
-          const timeRegex = /^(?:[01]\d|2[0-3]):[0-5]\d$/;
-          return timeRegex.test(value);
-        }
-      ),
+      reservation_time: Yup.string().test("valid-time", (value) => {
+        // Regular expression to validate time in HH:MM format
+        const timeRegex = /^(?:[01]\d|2[0-3]):[0-5]\d$/;
+        return timeRegex.test(value);
+      }),
 
       number_of_people: Yup.number()
         .max(12, "12 people is the max for each reservation")
@@ -74,77 +71,121 @@ export default function ReservationForm() {
   });
 
   return (
-    <>
+    <div className="flex justify-center items-start">
       <form
-        action="#"
         method="post"
-        className="flex flex-col items-center"
+        className="flex flex-col items-start gap-16 w-5/6"
         onSubmit={reservation.handleSubmit}
       >
-        <input
-          name="name"
-          type="text"
-          value={reservation.values.name}
-          onChange={reservation.handleChange}
-          onBlur={reservation.handleBlur}
-        />
-        {reservation.touched.name && reservation.errors.name && (
-          <p className="text-red-700">{reservation.errors.name}</p>
-        )}
-
-        <input
-          name="email"
-          type="email"
-          value={reservation.values.email}
-          onChange={reservation.handleChange}
-          onBlur={reservation.handleBlur}
-        />
-        {reservation.touched.email && reservation.errors.email && (
-          <p className="text-red-700">{reservation.errors.email}</p>
-        )}
-
-        <div className="flex flex-col items-center">
-          <div className="flex">
+        <div className=" flex flex-col items-start gap-4">
+          <label htmlFor="name" className="font-yellowtail text-goldenYellow">
+            Enter Your Full Name
+          </label>
+          <div className="flex flex-col items-start gap-2">
             <input
-              type="date"
-              name="reservation_date"
-              value={reservation.values.reservation_date}
+              type="text"
+              name="name"
+              value={reservation.values.name}
               onChange={reservation.handleChange}
               onBlur={reservation.handleBlur}
+              className="bg-black bg-opacity-50 border-goldenYellow border-2 text-white px-4 py-2"
             />
-            <input
-              type="time"
-              name="reservation_time"
-              value={reservation.values.reservation_time}
-              onChange={reservation.handleChange}
-              onBlur={reservation.handleBlur}
-            />
+            {reservation.touched.name && reservation.errors.name && (
+              <p className="text-red-700 font-semibold text-center">
+                {reservation.errors.name}
+              </p>
+            )}
           </div>
-          {(reservation.touched.reservation_date ||
-            reservation.touched.reservation_time) &&
-            (reservation.errors.reservation_date ||
-              reservation.errors.reservation_time) && (
-              <p className="text-red-700">
-                Please enter a valid date and time format
+        </div>
+
+        <div className=" flex flex-col items-start gap-4">
+          <label htmlFor="email" className="font-yellowtail text-goldenYellow">
+            Enter Your Email
+          </label>
+          <div className="flex flex-col items-start gap-2">
+            <input
+              name="email"
+              type="email"
+              value={reservation.values.email}
+              onChange={reservation.handleChange}
+              onBlur={reservation.handleBlur}
+              className="bg-black bg-opacity-50 border-goldenYellow border-2 text-white px-4 py-2"
+            />
+            {reservation.touched.email && reservation.errors.email && (
+              <p className="text-red-700 font-semibold text-center">
+                {reservation.errors.email}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <div className=" flex flex-col items-start gap-4">
+          <label htmlFor="date" className="font-yellowtail text-goldenYellow">
+            Select Your Reservation Time
+          </label>
+          <div className="flex flex-col items-start gap-2">
+            <div className="flex border-goldenYellow border-2">
+              <input
+                type="date"
+                name="reservation_date"
+                min={new Date().toISOString().split("T")[0]} // Set min attribute to today's date
+                value={reservation.values.reservation_date}
+                onChange={reservation.handleChange}
+                onBlur={reservation.handleBlur}
+                className="picker bg-black bg-opacity-50 text-white px-4 py-2"
+              />
+              <input
+                type="time"
+                name="reservation_time"
+                value={reservation.values.reservation_time}
+                onChange={reservation.handleChange}
+                onBlur={reservation.handleBlur}
+                className="picker bg-black bg-opacity-50 text-white px-4 py-2"
+              />
+            </div>
+            {(reservation.touched.reservation_date ||
+              reservation.touched.reservation_time) &&
+              (reservation.errors.reservation_date ||
+                reservation.errors.reservation_time) && (
+                <p className="text-red-700 font-semibold">
+                  Please enter a valid date and time format
+                </p>
+              )}
+          </div>
+        </div>
+
+        <div className="flex flex-col items-start gap-4">
+          <label
+            htmlFor="number_of_people"
+            className="font-yellowtail text-goldenYellow"
+          >
+            Number Of People
+          </label>
+          <input
+            type="number"
+            name="number_of_people"
+            value={reservation.values.number_of_people}
+            onChange={reservation.handleChange}
+            onBlur={reservation.handleBlur}
+            className="number-input appearance-none bg-black bg-opacity-50 border-goldenYellow border-2 py-2 px-4 text-white"
+          />
+          {reservation.touched.number_of_people &&
+            reservation.errors.number_of_people && (
+              <p className="text-red-700 font-semibold text-center">
+                {reservation.errors.number_of_people}
               </p>
             )}
         </div>
-        <input
-          type="number"
-          name="number_of_people"
-          value={reservation.values.number_of_people}
-          onChange={reservation.handleChange}
-          onBlur={reservation.handleBlur}
-        />
-        {reservation.touched.number_of_people &&
-          reservation.errors.number_of_people && (
-            <p className="text-red-700">
-              {reservation.errors.number_of_people}
-            </p>
-          )}
-        <button className="text-white" type="submit">
+
+        <motion.button
+          className="self-center font-poppins text-goldenYellow font-bold cursor-pointer hover:underline md:text-xl lg:ml-16"
+          type="submit"
+          whileTap={{
+            scale: 0.8,
+          }}
+        >
           Confirm My Reservation
-        </button>
+        </motion.button>
       </form>
 
       {/* While the request is being sent through the api service function, a bg overlay + a loading spin will apear */}
@@ -165,6 +206,6 @@ export default function ReservationForm() {
       >
         <p className="font-poppins text-center">{responseMessage}</p>
       </ModalWindow>
-    </>
+    </div>
   );
 }

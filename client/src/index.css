@@ -3,21 +3,32 @@
 @tailwind utilities;
 
 @layer utilities {
-    .glow {
-        @apply text-goldenYellow;
-        text-shadow: 0 0 20px rgba(237, 145, 0, 1);
-    }
+  .glow {
+    @apply text-goldenYellow;
+    text-shadow: 0 0 20px rgba(237, 145, 0, 1);
+  }
 }
 
 ::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #0F0A06;
+  background-color: #0f0a06;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #ED9100;
-    border-radius: 3px;
+  background-color: #ed9100;
+  border-radius: 3px;
+}
+
+.number-input::-webkit-inner-spin-button,
+.number-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.picker::-webkit-calendar-picker-indicator {
+  filter: invert(59%) sepia(98%) saturate(2654%) hue-rotate(9deg)
+    brightness(102%) contrast(101%);
 }
