@@ -30,7 +30,7 @@ function CartTable({ order, total, action, actionText, bg }) {
             {order.map((order) => (
               <TableRow
                 id={order.id}
-                meal={order.title}
+                meal={order.name}
                 price={order.price}
                 count={order.quantity}
               />

@@ -29,7 +29,7 @@ function Order() {
   const [loading, setLoading] = useState(true);
   setTimeout(() => {
     setLoading(false);
-  }, 200);
+  }, 750);
 
   const navigate = useNavigate();
 
@@ -50,37 +50,39 @@ function Order() {
   ];
 
   return (
-    <div className="p-28 bg-bgBlack">
-      {loading && <LoadingSpin />}
+    <>
+      <div className={`${loading ? "bg-bgBlack h-screen" : "hidden"}`}></div>
+      <div className="p-28 bg-bgBlack">
+        {loading && <LoadingSpin />}
+        <div
+          className={`${
+            loading
+              ? "hidden"
+              : "w-full h-screen pt-20 gap-24 flex flex-col items-center pb-8"
+          }`}
+        >
+          <BackArrow />
+          {!step && (
+            <div className="flex flex-col items-center gap-16 -mb-16">
+              <p className="glow font-bold text-xl px-8 text-center font-yellowtail md:text-4xl sm:w-1/2 md:w-[70%] lg:text-5xl lg:w-[65%]">
+                Place your food order online from the confort of your own house
+              </p>
+              <motion.p
+                whileTap={{
+                  scale: 0.8,
+                }}
+                className="font-poppins text-goldenYellow font-bold cursor-pointer hover:underline md:text-xl lg:ml-16"
+                onClick={() => navigate("/menu")}
+              >
+                Add more meals
+              </motion.p>
+            </div>
+          )}
 
-      <div
-        className={`${
-          loading
-            ? "hidden"
-            : "w-full h-screen pt-20 gap-24 flex flex-col items-center pb-8"
-        }`}
-      >
-        <BackArrow />
-        {!step && (
-          <div className="flex flex-col items-center gap-16 -mb-16">
-            <p className="glow font-bold text-xl px-8 text-center font-yellowtail md:text-4xl sm:w-1/2 md:w-[70%] lg:text-5xl lg:w-[65%]">
-              Place your food order online from the confort of your own house
-            </p>
-            <motion.p
-              whileTap={{
-                scale: 0.8,
-              }}
-              className="font-poppins text-goldenYellow font-bold cursor-pointer hover:underline md:text-xl lg:ml-16"
-              onClick={() => navigate("/menu")}
-            >
-              Add more meals
-            </motion.p>
-          </div>
-        )}
-
-        {steps[step]}
+          {steps[step]}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
