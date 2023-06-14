@@ -1,7 +1,6 @@
 import axios from "axios";
 
-export const paymentCheckout = (customerInfo, orderInfo) => {
-  // console.log(orderInfo)
+export const paymentCheckout = (orderInfo) => {
   axios
     .post(
       "http://localhost:3001/checkout",

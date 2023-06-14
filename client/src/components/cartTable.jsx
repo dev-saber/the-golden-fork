@@ -2,7 +2,7 @@ import React from "react";
 import TableRow from "../layouts/order/tableRow";
 import { motion } from "framer-motion";
 
-function CartTable({ order, total, action, actionText, bg }) {
+function CartTable({ order, total, action, actionText }) {
   return (
     <div className="flex flex-col items-center gap-4">
       <div className="relative overflow-x-auto">

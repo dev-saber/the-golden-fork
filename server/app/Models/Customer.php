@@ -11,11 +11,6 @@ class Customer extends Model
 
     protected $fillable = ['name', 'email'];
 
-    public function orders()
-    {
-        return $this->hasMany(Order::class);
-    }
-
     public function reservations()
     {
         return $this->hasMany(Reservation::class);
