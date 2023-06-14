@@ -30,7 +30,7 @@ export default function ReservationForm() {
       email: "",
       reservation_date: "",
       reservation_time: "",
-      number_of_people: 0,
+      number_of_people: "",
     },
     validationSchema: Yup.object({
       name: Yup.string()
@@ -78,7 +78,10 @@ export default function ReservationForm() {
         onSubmit={reservation.handleSubmit}
       >
         <div className=" flex flex-col items-start gap-4">
-          <label htmlFor="name" className="font-yellowtail text-goldenYellow">
+          <label
+            htmlFor="name"
+            className="font-yellowtail text-goldenYellow md:text-2xl"
+          >
             Enter Your Full Name
           </label>
           <div className="flex flex-col items-start gap-2">
@@ -88,7 +91,7 @@ export default function ReservationForm() {
               value={reservation.values.name}
               onChange={reservation.handleChange}
               onBlur={reservation.handleBlur}
-              className="bg-black bg-opacity-50 border-goldenYellow border-2 text-white px-4 py-2"
+              className="bg-black bg-opacity-50 border-goldenYellow border-2 text-white px-4 py-2 pr-20"
             />
             {reservation.touched.name && reservation.errors.name && (
               <p className="text-red-700 font-semibold text-center">
@@ -99,7 +102,10 @@ export default function ReservationForm() {
         </div>
 
         <div className=" flex flex-col items-start gap-4">
-          <label htmlFor="email" className="font-yellowtail text-goldenYellow">
+          <label
+            htmlFor="email"
+            className="font-yellowtail text-goldenYellow md:text-2xl"
+          >
             Enter Your Email
           </label>
           <div className="flex flex-col items-start gap-2">
@@ -109,7 +115,7 @@ export default function ReservationForm() {
               value={reservation.values.email}
               onChange={reservation.handleChange}
               onBlur={reservation.handleBlur}
-              className="bg-black bg-opacity-50 border-goldenYellow border-2 text-white px-4 py-2"
+              className="bg-black bg-opacity-50 border-goldenYellow border-2 text-white px-4 py-2 pr-20"
             />
             {reservation.touched.email && reservation.errors.email && (
               <p className="text-red-700 font-semibold text-center">
@@ -120,7 +126,10 @@ export default function ReservationForm() {
         </div>
 
         <div className=" flex flex-col items-start gap-4">
-          <label htmlFor="date" className="font-yellowtail text-goldenYellow">
+          <label
+            htmlFor="date"
+            className="font-yellowtail text-goldenYellow md:text-2xl"
+          >
             Select Your Reservation Time
           </label>
           <div className="flex flex-col items-start gap-2">
@@ -157,7 +166,7 @@ export default function ReservationForm() {
         <div className="flex flex-col items-start gap-4">
           <label
             htmlFor="number_of_people"
-            className="font-yellowtail text-goldenYellow"
+            className="font-yellowtail text-goldenYellow md:text-2xl"
           >
             Number Of People
           </label>
@@ -167,7 +176,7 @@ export default function ReservationForm() {
             value={reservation.values.number_of_people}
             onChange={reservation.handleChange}
             onBlur={reservation.handleBlur}
-            className="number-input appearance-none bg-black bg-opacity-50 border-goldenYellow border-2 py-2 px-4 text-white"
+            className="number-input appearance-none bg-black bg-opacity-50 border-goldenYellow border-2 py-2 px-4 text-white pr-20"
           />
           {reservation.touched.number_of_people &&
             reservation.errors.number_of_people && (

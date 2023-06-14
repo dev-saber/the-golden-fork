@@ -50,11 +50,14 @@ export default function OrderForm({ prev, formValues, setFormValues, total }) {
     <div className="flex justify-center items-start">
       {!loading && (
         <form
-          className="flex flex-col items-start gap-16"
+          className="flex flex-col items-start gap-16 mt-8"
           onSubmit={order.handleSubmit}
         >
-          <div className=" flex flex-col items-start gap-4">
-            <label htmlFor="name" className="font-yellowtail text-goldenYellow">
+          <div className="flex flex-col items-start gap-4">
+            <label
+              htmlFor="name"
+              className="font-yellowtail text-goldenYellow md:text-2xl"
+            >
               Enter Your Full Name
             </label>
             <div className="flex flex-col items-start gap-2">
@@ -64,7 +67,7 @@ export default function OrderForm({ prev, formValues, setFormValues, total }) {
                 value={order.values.name}
                 onChange={order.handleChange}
                 onBlur={order.handleBlur}
-                className="bg-black bg-opacity-50 border-goldenYellow border-2 text-white px-4 py-2"
+                className="bg-black bg-opacity-50 border-goldenYellow border-2 text-white px-4 py-2 pr-20"
               />
               {order.touched.name && order.errors.name && (
                 <p className="text-red-700 font-semibold text-center">
@@ -77,7 +80,7 @@ export default function OrderForm({ prev, formValues, setFormValues, total }) {
           <div className=" flex flex-col items-start gap-4">
             <label
               htmlFor="address"
-              className="font-yellowtail text-goldenYellow"
+              className="font-yellowtail text-goldenYellow md:text-2xl"
             >
               Enter Your Local Address
             </label>
@@ -88,7 +91,7 @@ export default function OrderForm({ prev, formValues, setFormValues, total }) {
                 value={order.values.address}
                 onChange={order.handleChange}
                 onBlur={order.handleBlur}
-                className="bg-black bg-opacity-50 border-goldenYellow border-2 text-white px-4 py-2"
+                className="bg-black bg-opacity-50 border-goldenYellow border-2 text-white px-4 py-2 pr-20"
               />
               {order.touched.address && order.errors.address && (
                 <p className="text-red-700 font-semibold text-center">
@@ -101,7 +104,7 @@ export default function OrderForm({ prev, formValues, setFormValues, total }) {
           <div className=" flex flex-col items-start gap-4">
             <label
               htmlFor="delivery_time"
-              className="font-yellowtail text-goldenYellow"
+              className="font-yellowtail text-goldenYellow md:text-2xl"
             >
               Enter Your Email
             </label>

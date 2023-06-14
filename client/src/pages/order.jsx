@@ -52,17 +52,15 @@ function Order() {
   return (
     <>
       <div className={`${loading ? "bg-bgBlack h-screen" : "hidden"}`}></div>
-      <div className={`p-28 bg-bgBlack ${step === 1 && "py-36 "}`}>
+      <div className={`bg-bgBlack`}>
         {loading && <LoadingSpin />}
         <div
           className={`${
-            loading
-              ? "hidden"
-              : "w-full h-screen pt-20 gap-24 flex flex-col items-center pb-8"
-          }`}
+            loading ? "hidden" : "w-full gap-24 flex flex-col items-center pb-8"
+          } ${!step && "h-screen"}`}
         >
           <BackArrow />
-          <div className="flex flex-col items-center gap-16 -mb-16">
+          <div className="flex flex-col items-center gap-16 mt-16">
             <p className="glow font-bold text-xl px-8 text-center font-yellowtail md:text-4xl sm:w-1/2 md:w-[70%] lg:text-5xl lg:w-[65%]">
               Place your food order online from the confort of your own house
             </p>
