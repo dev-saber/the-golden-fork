@@ -11,7 +11,7 @@ export default function NavBar() {
       <img
         src="/images/the-golden-fork-logo.svg"
         loading="lazy"
-        className="w-1/5 md:w-[10%] lg:-ml-24"
+        className="w-1/5 md:w-[10%] lg:-mt-4 lg:-ml-24"
         alt="Logo"
       />
 
@@ -62,7 +62,7 @@ export default function NavBar() {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -100 }}
         transition={{ duration: 0.3 }}
-        className={`border-none text-center bg-bgBlack text-2xl top-0 right-0 bottom-0 left-0 text-goldenYellow flex flex-col justify-around w-full p-4 md:p-0 mt-0 border md:flex-row md:space-x-8 md:mt-0 md:border-0 md:relative md:top-0 md:bg-transparent md:flex md:w-auto md:text-white ${
+        className={`border-none text-center bg-bgBlack text-2xl top-0 right-0 bottom-0 left-0 text-goldenYellow flex flex-col justify-around w-full p-4 md:p-0 mt-0 border md:flex-row md:space-x-8 md:relative md:bg-transparent md:flex md:w-3/5 md:text-white lg:w-1/2 ${
           isShown ? "fixed" : "hidden"
         }`}
       >
