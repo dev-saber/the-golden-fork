@@ -13,7 +13,7 @@ export const fetchMenu = createAsyncThunk("menu/fetchMenu", () => {
     .then((response) => response.data);
 });
 
-const menuSLice = createSlice({
+const menuSlice = createSlice({
   name: "menu",
   initialState,
   extraReducers: (builder) => {
@@ -35,4 +35,4 @@ const menuSLice = createSlice({
   },
 });
 
-export default menuSLice.reducer;
+export default menuSlice.reducer;
