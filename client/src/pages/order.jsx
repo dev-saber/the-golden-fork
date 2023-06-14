@@ -52,7 +52,7 @@ function Order() {
   return (
     <>
       <div className={`${loading ? "bg-bgBlack h-screen" : "hidden"}`}></div>
-      <div className="p-28 bg-bgBlack">
+      <div className={`p-28 bg-bgBlack ${step === 1 && "py-36 "}`}>
         {loading && <LoadingSpin />}
         <div
           className={`${
@@ -62,11 +62,11 @@ function Order() {
           }`}
         >
           <BackArrow />
-          {!step && (
-            <div className="flex flex-col items-center gap-16 -mb-16">
-              <p className="glow font-bold text-xl px-8 text-center font-yellowtail md:text-4xl sm:w-1/2 md:w-[70%] lg:text-5xl lg:w-[65%]">
-                Place your food order online from the confort of your own house
-              </p>
+          <div className="flex flex-col items-center gap-16 -mb-16">
+            <p className="glow font-bold text-xl px-8 text-center font-yellowtail md:text-4xl sm:w-1/2 md:w-[70%] lg:text-5xl lg:w-[65%]">
+              Place your food order online from the confort of your own house
+            </p>
+            {!step && (
               <motion.p
                 whileTap={{
                   scale: 0.8,
@@ -76,8 +76,8 @@ function Order() {
               >
                 Add more meals
               </motion.p>
-            </div>
-          )}
+            )}
+          </div>
 
           {steps[step]}
         </div>

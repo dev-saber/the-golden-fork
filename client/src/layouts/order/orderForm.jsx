@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { paymentCheckout } from "../../api/paymentCheckout";
+import LoadingSpin from "../../components/loadingSpin";
 
 export default function OrderForm({ prev, formValues, setFormValues, total }) {
+  const [loading, setLoading] = useState(false);
+
   const orderDetails = {
     mealsInfo: useSelector((state) => state.cart.cart),
     amount: total,
@@ -17,10 +20,6 @@ export default function OrderForm({ prev, formValues, setFormValues, total }) {
       name: Yup.string()
         .max(15, "Only 25 caracters are allowed")
         .min(8, "Enter at least 8 characters")
-        .required("Required"),
-
-      email: Yup.string()
-        .email("Pease enter a valid email address")
         .required("Required"),
 
       address: Yup.string().required("Required"),
@@ -37,7 +36,8 @@ export default function OrderForm({ prev, formValues, setFormValues, total }) {
     }),
     onSubmit: (values) => {
       const userInfo = values;
-      paymentCheckout(userInfo, orderDetails)
+      paymentCheckout(userInfo, orderDetails);
+      setLoading(true);
     },
   });
 
@@ -47,54 +47,80 @@ export default function OrderForm({ prev, formValues, setFormValues, total }) {
   };
 
   return (
-    <>
+    <div className="flex justify-center items-start">
       <form
-        className="flex flex-col items-center"
+        className="flex flex-col items-start gap-16"
         onSubmit={order.handleSubmit}
       >
-        <input
-          name="name"
-          type="text"
-          value={order.values.name}
-          onChange={order.handleChange}
-          onBlur={order.handleBlur}
-        />
-        {order.touched.name && order.errors.name && (
-          <p className="text-red-700">{order.errors.name}</p>
-        )}
+        <div className=" flex flex-col items-start gap-4">
+          <label htmlFor="name" className="font-yellowtail text-goldenYellow">
+            Enter Your Full Name
+          </label>
+          <div className="flex flex-col items-start gap-2">
+            <input
+              name="name"
+              type="text"
+              value={order.values.name}
+              onChange={order.handleChange}
+              onBlur={order.handleBlur}
+              className="bg-black bg-opacity-50 border-goldenYellow border-2 text-white px-4 py-2"
+            />
+            {order.touched.name && order.errors.name && (
+              <p className="text-red-700 font-semibold text-center">
+                {order.errors.name}
+              </p>
+            )}
+          </div>
+        </div>
 
-        <input
-          name="email"
-          type="email"
-          value={order.values.email}
-          onChange={order.handleChange}
-          onBlur={order.handleBlur}
-        />
-        {order.touched.email && order.errors.email && (
-          <p className="text-red-700">{order.errors.email}</p>
-        )}
+        <div className=" flex flex-col items-start gap-4">
+          <label
+            htmlFor="address"
+            className="font-yellowtail text-goldenYellow"
+          >
+            Enter Your Local Address
+          </label>
+          <div className="flex flex-col items-start gap-2">
+            <input
+              name="address"
+              type="text"
+              value={order.values.address}
+              onChange={order.handleChange}
+              onBlur={order.handleBlur}
+              className="bg-black bg-opacity-50 border-goldenYellow border-2 text-white px-4 py-2"
+            />
+            {order.touched.address && order.errors.address && (
+              <p className="text-red-700 font-semibold text-center">
+                {order.errors.address}
+              </p>
+            )}
+          </div>
+        </div>
 
-        <input
-          name="address"
-          type="text"
-          value={order.values.address}
-          onChange={order.handleChange}
-          onBlur={order.handleBlur}
-        />
-        {order.touched.address && order.errors.address && (
-          <p className="text-red-700">{order.errors.address}</p>
-        )}
+        <div className=" flex flex-col items-start gap-4">
+          <label
+            htmlFor="delivery_time"
+            className="font-yellowtail text-goldenYellow"
+          >
+            Enter Your Email
+          </label>
+          <div className="flex flex-col items-start gap-2">
+            <input
+              type="time"
+              name="delivery_time"
+              value={order.values.delivery_time}
+              onChange={order.handleChange}
+              onBlur={order.handleBlur}
+              className="picker border-goldenYellow border-2 bg-black bg-opacity-50 text-white px-4 py-2"
+            />
 
-        <input
-          type="time"
-          name="delivery_time"
-          value={order.values.delivery_time}
-          onChange={order.handleChange}
-          onBlur={order.handleBlur}
-        />
-        {order.touched.delivery_time && order.errors.delivery_time && (
-          <p className="text-red-700">{order.errors.delivery_time}</p>
-        )}
+            {order.touched.delivery_time && order.errors.delivery_time && (
+              <p className="text-red-700 font-semibold">
+                {order.errors.delivery_time}
+              </p>
+            )}
+          </div>
+        </div>
 
         <div className="flex gap-8">
           <motion.p
@@ -118,6 +144,12 @@ export default function OrderForm({ prev, formValues, setFormValues, total }) {
           </motion.button>
         </div>
       </form>
-    </>
+      <div
+        className={`${
+          loading ? "fixed inset-0 bg-black opacity-50" : "hidden"
+        }`}
+      ></div>
+      {loading && <LoadingSpin />}
+    </div>
   );
 }
