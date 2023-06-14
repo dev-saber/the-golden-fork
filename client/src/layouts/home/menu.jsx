@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Title from "../../components/title";
 import MenuCategory from "./menuCategory";
 import NavLink from "../../components/navLink";
+import LoadingSpin from "../../components/loadingSpin";
 import { fetchMenu } from "../../redux/slices/menuSlice";
 
 export default function Menu() {
@@ -26,7 +27,7 @@ export default function Menu() {
   return (
     <div id="menu" className="flex flex-col items-center gap-8 lg:gap-24">
       <Title text="Menu" />
-      {data && data.length > 0 && (
+      {data && data.length > 0 ? (
         <>
           <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-56">
             {/* Rendering the first 2 categories */}
@@ -40,9 +41,13 @@ export default function Menu() {
               <MenuCategory cat={category.title} key={category.id} />
             ))}
           </div>
+          <NavLink text="View Menu" navigation="menu" />
         </>
+      ) : (
+        <div className="mt-16">
+          <LoadingSpin menu={true} />
+        </div>
       )}
-      <NavLink text="View Menu" navigation="menu" />
     </div>
   );
 }
