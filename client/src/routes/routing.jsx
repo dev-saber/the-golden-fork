@@ -5,6 +5,8 @@ import NotFound from "../pages/notFound";
 import Reservation from "../pages/reservation";
 import Order from "../pages/order";
 import OrderMiddleware from "../middlewares/orderMiddleware";
+import Success from "../pages/success";
+import Cancel from "../pages/cancel";
 
 export default function Routing() {
   return (
@@ -20,6 +22,8 @@ export default function Routing() {
           </OrderMiddleware>
         }
       />
+      <Route path="/success" element={<Success />} />
+      <Route path="/cancel" element={<Cancel />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
