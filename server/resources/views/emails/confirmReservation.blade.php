@@ -215,11 +215,11 @@
         </ul>
         <form action={{ route('reserve') }} method="post" class="flex flex-col items-center">
             @csrf
-            <input type="hidden" name="name" value={{ $data->name }}>
-            <input type="hidden" name="email" value={{ $data->email }}>
-            <input type="hidden" name="reservation_date" value={{ $data->reservation_date }}>
-            <input type="hidden" name="reservation_time" value={{ $data->reservation_time }}>
-            <input type="hidden" name="number_of_people" value={{ $data->number_of_people }}>
+
+            @foreach(['name', 'email', 'reservation_date', 'reservation_time', 'number_of_people'] as $field)
+                <input type="hidden" name="{{ $field }}" value="{{ $data->$field }}">
+            @endforeach
+
             <button
                 class="m-8 font-poppins text-goldenYellow font-bold cursor-pointer hover:underline focus:outline-none">Confirm
                 My Reservation</button>
