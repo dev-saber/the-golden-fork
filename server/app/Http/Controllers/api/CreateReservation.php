@@ -12,40 +12,55 @@ use Illuminate\Support\Facades\Mail;
 class CreateReservation extends Controller
 {
 
-    public function confirm(Request $request)
+    public function store(Request $request)
     {
-        Mail::to($request->email)->send(new ConfirmReservation($request));
+        $customer = Customer::where('email', $request->email)->first();
+
+        if ($customer && true) {
+            $newReservation = Reservation::create([
+                'reservation_date' => $request->reservation_date,
+                'reservation_time' => $request->reservation_time,
+                'number_of_people' => $request->number_of_people,
+                'customer_id' => $customer->id
+            ]);
+        } else {
+            $customer = Customer::create([
+                'name' => $request->name,
+                'email' => $request->email
+            ]);
+
+            $newReservation = Reservation::create([
+                'reservation_date' => $request->reservation_date,
+                'reservation_time' => $request->reservation_time,
+                'number_of_people' => $request->number_of_people,
+                'customer_id' => $customer->id
+            ]);
+        }
+
+        $data = [
+            'id' => $newReservation->id,
+            'name' => $customer->name,
+            'reservation_date' => $newReservation->reservation_date,
+            'reservation_time' => $newReservation->reservation_time,
+            'number_of_people' => $newReservation->number_of_people,
+        ];
+
+        Mail::to($request->email)->send(new ConfirmReservation($data));
 
         return response([
             'message' => 'Your reservation is pending, please confirm it from the mail sent to your email address.',
         ], 202);
     }
 
-    public function reserve(Request $request)
+    public function confirm(Request $request)
     {
-        $old_custommer = Customer::where('email', $request->email)->first();
+        $reservation = Reservation::find($request->id);
 
-        if ($old_custommer && true) {
-            Reservation::create([
-                'reservation_date' => $request->reservation_date,
-                'reservation_time' => $request->reservation_time,
-                'number_of_people' => $request->number_of_people,
-                'customer_id' => $old_custommer->id
-            ]);
-        } else {
-            $newCustomer = Customer::create([
-                'name' => $request->name,
-                'email' => $request->email
-            ]);
-
-            Reservation::create([
-                'reservation_date' => $request->reservation_date,
-                'reservation_time' => $request->reservation_time,
-                'number_of_people' => $request->number_of_people,
-                'customer_id' => $newCustomer->id
-            ]);
+        if ($reservation->is_confirmed === 0) {
+            $reservation->is_confirmed = 1;
+            $reservation->save();
         }
-
+        
         return response()->view('emails.reservationSuccess', ['message' => 'success'], 200);
     }
 }

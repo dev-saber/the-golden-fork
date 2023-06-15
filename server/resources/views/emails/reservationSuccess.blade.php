@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Yellowtail&family=Poppins&display=swap");
+    </style>
 </head>
 
 <body class="w-full h-screen bg-bgBlack flex justify-center items-center">

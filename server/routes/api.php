@@ -21,8 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/menu', [MenuList::class, 'menu']);
-Route::post('/confirm', [CreateReservation::class, 'confirm']);
-Route::post('/reserve', [CreateReservation::class, 'reserve'])
+Route::post('/store', [CreateReservation::class, 'store']);
+Route::post('/confirm', [CreateReservation::class, 'confirm'])
     // the middleware is used to prevent post request consumption from any api software
     ->middleware('confirmation')
     ->name('reserve');
