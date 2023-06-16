@@ -1,240 +1,120 @@
-<style>
-    @import url("https://fonts.googleapis.com/css2?family=Yellowtail&family=Poppins&display=swap");
-    @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+<!DOCTYPE html>
+<html>
 
-    body {
-        width: 100%;
-        height: 100%;
-        background-color: #0f0a06;
-        display: flex;
-        flex-direction: column;
-        gap: 28px;
-        padding-top: 16px;
-        color: #fff;
-        align-items: center;
-    }
-
-    div.width {
-        width: 75%;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .font-yellowtail {
-        font-family: "Yellowtail", cursive;
-    }
-
-    .text-goldenYellow {
-        color: #ed9100;
-    }
-
-    .glow {
-        text-shadow: 0 0 20px rgba(237, 145, 0, 1);
-    }
-
-    .text-center {
-        text-align: center;
-    }
-
-    .text-5xl {
-        font-size: 3rem;
-    }
-
-    @media (min-width: 1024px) {
-        .text-5xl {
-            font-size: 4.5rem;
+<head>
+    <title>The Golden Fork</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
         }
-    }
 
-    .text-3xl {
-        font-size: 1.875rem;
-    }
+        li {
+            margin-bottom: 10px;
+        }
 
-    @media (min-width: 1024px) {
-        .text-3xl {
+        label {
+            font-weight: bold;
+            color: #ed9100;
+            font-size: 1.25rem;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: #0f0a06;
+            padding: 5%;
+            gap: 28px;
+            padding-top: 16px;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #ed9100;
             font-size: 3rem;
+            text-align: center
         }
-    }
 
-    .font-poppins {
-        font-family: "Poppins", sans-serif;
-    }
-
-    @media (min-width: 1024px) {
-        .lg-text-lg {
-            font-size: 1.125rem;
+        .glow {
+            text-shadow: 0 0 20px rgba(237, 145, 0, 1);
         }
-    }
 
-    ul.flex.flex-col {
-        display: flex;
-        flex-direction: column;
-    }
+        .container {
+            width: 75%;
+            gap: 3rem;
+        }
 
-    ul.gap-4>li:not(:last-child) {
-        margin-bottom: 1rem;
-    }
+        .name {
+            color: #ed9100;
+        }
 
-    ul.text-xl {
-        font-size: 1.25rem;
-    }
+        h3 {
+            font-size: 2rem;
+        }
 
-    @media (min-width: 768px) {
-        ul.md-text-2xl {
+        p {
+            font-size: 1.25rem;
+        }
+
+        .info {
             font-size: 1.5rem;
         }
-    }
 
-    @media (min-width: 1024px) {
-        ul.lg-text-3xl {
-            font-size: 1.875rem;
-        }
-    }
-
-    span.text-white {
-        color: #fff;
-    }
-
-    span.text-sm {
-        font-size: 0.875rem;
-    }
-
-    @media (min-width: 768px) {
-        span.md-text-lg {
-            font-size: 1.125rem;
-        }
-    }
-
-    @media (min-width: 1024px) {
-
-        span.md-ml-8,
-        span.lg-ml-16 {
-            margin-left: 2rem;
+        button {
+            border: none;
+            background-color: transparent;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ed9100;
+            cursor: pointer;
         }
 
-        span.lg-text-2xl {
-            font-size: 1.875rem;
-        }
-    }
-
-    form.flex.flex-col.items-center {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    input[type="hidden"] {
-        display: none;
-    }
-
-    button.m-8 {
-        margin: 2rem;
-    }
-
-    button.font-bold {
-        font-weight: bold;
-    }
-
-    button.cursor-pointer {
-        cursor: pointer;
-    }
-
-    button.hover\:underline:hover {
-        text-decoration: underline;
-    }
-
-    button.focus\:outline-none:focus {
-        outline: none;
-    }
-
-    div.w-full {
-        width: 100%;
-    }
-
-    div.font-semibold {
-        font-weight: 600;
-    }
-
-    div.text-xs {
-        font-size: 0.75rem;
-    }
-
-    div.flex.justify-around {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    div.pb-4 {
-        padding-bottom: 1rem;
-    }
-
-    @media (min-width: 768px) {
-        div.lg-py-4 {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
+        button:hover {
+            text-decoration: underline;
         }
 
-        div.md-text-lg {
-            font-size: 1.125rem;
+        form {
+            margin-left: 50%;
+            margin-right: auto;
+            width: 50%;
         }
-    }
+    </style>
+</head>
 
-    button {
-        background-color: transparent;
-        border: none;
-    }
+<body>
+    <h1 class="glow">The Golden Fork</h1>
+    <div class="container">
+        <h3>Dear <span class="name">{{ $data['name'] }}</span></h3>
 
-    @media (min-width: 1024px) {
-        div.lg-text-2xl {
-            font-size: 1.875rem;
-        }
-    }
-</style>
-
-<body class="w-full h-full bg-bgBlack flex flex-col gap-28 pt-16 text-white items-center">
-    <p class="font-yellowtail text-goldenYellow glow text-center text-5xl lg:text-8xl">The Golden Fork</p>
-    <div class="w-3/4 flex flex-col gap-12">
-        <p class="font-yellowtail text-3xl lg:text-5xl">
-            Dear <span class="text-goldenYellow">{{ $data['name'] }}</span>
+        <p>
+            We have just received your wished request of booking a reservation at
+            The Golden Fork Restaurant, please confirm its information:
         </p>
-        <p class="font-poppins lg:text-lg lg:w-3/4">
-            We have just received your wished request of booking a reservation at The Golden Fork Restaurant, please
-            confirm its information:
-        </p>
-        <ul class="font-yellowtail text-goldenYellow flex flex-col gap-4 text-xl md:text-2xl lg:text-3xl">
-            <li>Reservation Date : <br class="md:hidden" /> <span
-                    class="font-poppins text-white text-sm md:text-lg md:ml-8 lg:ml-16 lg:text-2xl">
-                    {{ $data['reservation_date'] }} </span> </li>
-            <li>Reservation Time : <br class="md:hidden" /> <span
-                    class="font-poppins text-white text-sm md:text-lg md:ml-8 lg:ml-16 lg:text-2xl">
-                    {{ $data['reservation_time'] }} </span> </li>
-            <li>Number of People : <br class="md:hidden" /> <span
-                    class="font-poppins text-white text-sm md:text-lg md:ml-8 lg:ml-16 lg:text-2xl">
-                    {{ $data['number_of_people'] }} </span></li>
+
+        <ul>
+            <li>
+                <label>Reservation Date:</label>
+                <span class="info">{{ $data['reservation_date'] }}</span>
+            </li>
+            <li>
+                <label>Reservation Time:</label>
+                <span class="info">{{ $data['reservation_time'] }}</span>
+            </li>
+            <li>
+                <label>Number of People:</label>
+                <span class="info">{{ $data['number_of_people'] }}</span>
+            </li>
         </ul>
-        <form action={{ route('reserve') }} method="post" class="flex flex-col items-center">
+
+        <form action={{ route('reserve') }} method="post">
             @csrf
 
             <input type="hidden" name="id" value={{ $data['id'] }}>
-            <button
-                class="m-8 font-poppins text-goldenYellow font-bold cursor-pointer hover:underline focus:outline-none">Confirm
-                My Reservation</button>
+            <button>Confirm My Reservation</button>
         </form>
-        <div
-            class="w-full font-yellowtail font-semibold text-xs glow flex justify-around pb-4 lg:py-4 md:text-lg lg:text-2xl">
-            <p>
-                Address:
-                <br /> 123 Main Street, Rabat
-            </p>
-            <p>
-                Phone:
-                <br /> (212) 5 37 00 00 00
-            </p>
-            <p>
-                Email:
-                <br /> thegoldenforkcontact@gmail.com
-            </p>
-        </div>
     </div>
 </body>
+
+</html>
