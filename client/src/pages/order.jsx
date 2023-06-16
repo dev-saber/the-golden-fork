@@ -80,19 +80,7 @@ function Order() {
               action={handleCheckout}
               actionText={"Checkout"}
             />
-
-            {/* <motion.p
-              whileTap={{
-                scale: 0.8,
-              }}
-              className="font-poppins text-goldenYellow font-bold text-center cursor-pointer hover:underline md:text-xl"
-              onClick={handleCheckout}
-            >
-              
-            </motion.p> */}
           </div>
-
-          {/* {steps[step]} */}
         </div>
       </div>
     </>

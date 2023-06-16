@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import Title from "../../components/title";
 import NavLink from "../../components/navLink";
 import ModalWindow from "../../components/modalWindow";

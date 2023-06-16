@@ -1,11 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToModal } from "../../redux/slices/mealModalSlice";
 
 export default function Meal({ id, title, price, image, open }) {
   const dispatch = useDispatch();
-  const meal = useSelector((state) => state.mealModal.data);
 
   return (
     <div className="flex flex-col items-center gap-4">

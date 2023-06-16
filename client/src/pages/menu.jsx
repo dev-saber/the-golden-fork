@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMenu } from "../redux/slices/menuSlice";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 import LoadingSpin from "../components/loadingSpin";
 import Title from "../components/title";
@@ -10,7 +11,6 @@ import BackArrow from "../components/backArrow";
 import AddToCart from "../layouts/menu/addToCart";
 import ModalWindow from "../components/modalWindow";
 import CartTable from "../components/cartTable";
-import { useNavigate } from "react-router-dom";
 
 export default function Menu() {
   const data = useSelector((state) => state.menu.menu);

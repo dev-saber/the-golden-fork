@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { modifyQuantity, removeFromCart } from "../../redux/slices/cartSlice";
-import { useEffect } from "react";
 
 function TableRow({ id, meal, price, count }) {
   const [quantity, setQuantity] = useState(count);
