@@ -60,7 +60,7 @@ class CreateReservation extends Controller
             $reservation->is_confirmed = 1;
             $reservation->save();
         }
-        
+
         return response()->view('emails.reservationSuccess', ['message' => 'success'], 200);
     }
 }

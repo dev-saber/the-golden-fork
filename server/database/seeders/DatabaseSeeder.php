@@ -15,12 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
 
         $categories = ['Appetizers', 'Salads', 'Pasta', 'Desserts'];
 
@@ -153,10 +147,6 @@ class DatabaseSeeder extends Seeder
                         'image_path' => 'Apple Tart with Cinnamon Ice Cream-img.png',
                         'stripe_id' => 'prod_O39FUDyxPhGL3K'
                     ]);
-                    break;
-
-                default:
-                    # code...
                     break;
             }
         }
