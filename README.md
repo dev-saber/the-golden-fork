@@ -31,13 +31,6 @@ The Golden Fork is a restaurant website that handles online orders and reservati
 | Laravel | PHP framework for building the app API |
 | ExpressJS | Node.js framework for processing the Stripe Payment Checkout |
 
-# ✏️ Prototyping
-
-- Use Case Diagram:
-[https://www.figma.com/file/H9PcWtVgchuOBhXjv5m9g4/Untitled?type=design&node-id=0%3A1&t=j0qeSeWsr5Tn3V98-1](https://www.figma.com/file/H9PcWtVgchuOBhXjv5m9g4/Untitled?type=design&node-id=0%3A1&t=j0qeSeWsr5Tn3V98-1)
-- Class Diagram:
-[https://www.figma.com/file/W4W5FxyTaXj6cypGBnpWN8/the-golden-fork-class-diagram?type=design&node-id=0%3A1&t=gbM6StfCOjqhikPj-1](https://www.figma.com/file/W4W5FxyTaXj6cypGBnpWN8/the-golden-fork-class-diagram?type=design&node-id=0%3A1&t=gbM6StfCOjqhikPj-1)
-
 # 📁 Client Folder Structure
 
 - `public` : contains all images.
