@@ -4,26 +4,16 @@ import { motion } from "framer-motion";
 
 function CartTable({ order, total, action, actionText }) {
   return (
-    <div className="flex flex-col items-center gap-4">
-      <div className="relative overflow-x-auto">
+    <div className="flex flex-col items-center gap-4 w-3/5 mx-auto">
+      <div className="overflow-x-auto max-w-sm md:max-w-max">
         <table className="border-2 border-goldenYellow text-sm text-left sm:rounded-lg">
           <thead className="text-lg text-center font-yellowtail text-goldenYellow">
             <tr>
-              <th scope="col" className="px-6 py-3">
-                Product
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Price
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Quantity
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Amount
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Action
-              </th>
+              <th className="px-6 py-3">Product</th>
+              <th className="px-6 py-3">Price</th>
+              <th className="px-6 py-3">Quantity</th>
+              <th className="px-6 py-3">Amount</th>
+              <th className="px-6 py-3">Action</th>
             </tr>
           </thead>
           <tbody>
