@@ -5,7 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
     "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
-  plugins: [require("flowbite/plugin")],
+  plugins: [require("flowbite/plugin"), require("daisyui")],
   theme: {
     extend: {
       colors: {
