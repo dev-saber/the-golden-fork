@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Title from "../../components/title";
@@ -10,6 +10,12 @@ import { fetchMenu } from "../../redux/slices/menuSlice";
 export default function Menu() {
   const menu = useSelector((state) => state.menu);
   let data;
+  const categories = [
+    { id: 1, title: "Appetizers" },
+    { id: 2, title: "Salads" },
+    { id: 3, title: "Pasta" },
+    { id: 4, title: "Desserts" },
+  ];
 
   if (menu.loading) {
     data = [];
@@ -24,29 +30,38 @@ export default function Menu() {
     dispatch(fetchMenu());
   }, []);
 
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 1.5 * 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <div id="menu" className="flex flex-col items-center gap-8 lg:gap-24">
       <Title text="Menu" />
-      {data && data.length > 0 ? (
+      {isLoading ? (
+        <div className="mt-16">
+          <LoadingSpin menu={true} />
+        </div>
+      ) : (
         <>
           <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-56">
             {/* Rendering the first 2 categories */}
-            {data.slice(0, 2).map((category) => (
+            {categories.slice(0, 2).map((category) => (
               <MenuCategory cat={category.title} key={category.id} />
             ))}
           </div>
           <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-56">
             {/* Rendering the last 2 categories */}
-            {data.slice(2).map((category) => (
+            {categories.slice(2).map((category) => (
               <MenuCategory cat={category.title} key={category.id} />
             ))}
           </div>
           <NavLink text="View Menu" navigation="menu" />
         </>
-      ) : (
-        <div className="mt-16">
-          <LoadingSpin menu={true} />
-        </div>
       )}
     </div>
   );
