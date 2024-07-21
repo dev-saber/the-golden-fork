@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import server from "../../api/mirage";
 
 const initialState = {
   loading: "",
@@ -8,9 +9,7 @@ const initialState = {
 };
 
 export const fetchMenu = createAsyncThunk("menu/fetchMenu", () => {
-  return axios
-    .get("http://localhost:8000/api/menu")
-    .then((response) => response.data);
+  return axios.get("api/menu").then((response) => response.data);
 });
 
 const menuSlice = createSlice({
